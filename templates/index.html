@@ -1,208 +1,159 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="/static/assets/img/favicon.png">
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Fantasy Basketball Manager</title>
-
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-	
-    <link href="/static/bootstrap3/css/bootstrap.css" rel="stylesheet" />
-    <link href="/static/bootstrap3/css/font-awesome.css" rel="stylesheet" />
+	<meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+	<title>HOME</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
     
-	<link href="/static/assets/css/gsdk.css" rel="stylesheet" />
-    <link href="/static/assets/css/demo.css" rel="stylesheet" />
-    <link href="/static/assets/css/style.css" rel="stylesheet" />
-    <link href="/static/assets/css/icomoon.css" rel="stylesheet" />
+    <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
-    <!--     Font Awesome     -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-  
 </head>
-
 <body>
- <div id="navbar-full">
-    <div id="navbar">
-    <!--    
-        navbar-default can be changed with navbar-ct-blue navbar-ct-azzure navbar-ct-red navbar-ct-green navbar-ct-orange  
-        -->
-        <nav class="navbar navbar-ct-myColor navbar-transparent navbar-fixed-top" role="navigation">
-          
-          <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#gsdk">Fantasy Basketball</a>
+<section class="headerwrap ">
+    <header>
+		<div class="header2 header">
+ 			<div class="top">
+				<div class="wp">
+					<div class="fl"><p><b>Fantasy Basketball</b></p></div>
+                        <div class="personal">
+                            <dl class="user fr">
+                                <dd>User<img class="down fr" src="/static/images/top_down.png"/></dd>
+                                <dt><img width="20" height="20" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                            </dl>
+                            <div class="userdetail">
+                                <dl>
+                                    <dt><img width="80" height="80" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                                    <dd>
+                                        <h2>Some Information</h2>
+                                        <p>Some Information</p>
+                                    </dd>
+                                </dl>
+                                <div class="btn">
+                                    <a class="personcenter fl" href="{% url 'user_info' %}">My Profile</a>
+                                    <a class="fr" href="{% url 'log_in' %}">Log out</a>
+                                </div>
+                            </div>
+                        </div>
+				</div>
+			</div>
+
+            <div class="middle">
+                <div class="wp">
+                    <a href="{% url 'home' %}"><img class="fl" src="/static/images/b_logo.png" align="center" /></a>
+                    <h1>Welcome to Fantasy Basketball</h1>
+                </div>
             </div>
-        
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#gsdk">Link</a></li>
-                <li class="dropdown">
-                      <a href="#gsdk" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#gsdk">Action</a></li>
-                        <li><a href="#gsdk">Another action</a></li>
-                        <li><a href="#gsdk">Something</a></li>
-                        <li><a href="#gsdk">Another action</a></li>
-                        <li><a href="#gsdk">Something</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#gsdk">Separated link</a></li>
-                      </ul>
-                </li>
-                  <!-- search button and form -->
-{#                <li>#}
-{#                    <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search"></i></a>#}
-{#                </li>#}
-              </ul>
-               <form class="navbar-form navbar-left navbar-search-form" role="search">
-                 <div class="form-group">
-                      <input type="text" value="" class="form-control" placeholder="Search...">
-                 </div>
-              </form>
-
-                <!-- register and log in -->
-              <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#gsdk">Register</a></li>
-                    
-                    <li><button href="#gsdk" class="btn btn-round btn-default">Sign in</button></li>
-               </ul>
-              
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-        <!-- picture -->
-        <div class="blurred-container">
-            <div class="motto">
-                <div>Get</div>
-                <div class="border no-right-border">Sh</div><div class="border">it</div>
-                <div>Done</div>
-            </div>
-            <div class="img-src" style="background-image: url('/static/assets/img/cover_4.jpg')"></div>
-            <div class='img-src blur' style="background-image: url('/static/assets/img/cover_4_blur.jpg')"></div>
-        </div>
-    </div><!--  end navbar -->
-
-</div> <!-- end menu-dropdown -->
-
-<div class="main">
-    <div class="container tim-container" style="max-width:800px; padding-top:100px">
-       <h1 class="text-center">Welcome to Fanstasy Basketball <br> <small class="subtitle">Please just have fun and enjoy</small></h1>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
-           <!--     end extras -->        
+            
+            
+			<nav>
+				<div class="nav">
+					<div class="wp">
+						<ul>
+							<li class="active"><a href="{% url 'home' %}">HOME</a></li>
+							<li><a href="{% url 'user_info' %}">ME</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+            
+			</div>
+    </header>
+</section>
+<!--crumbs start-->
+<section>
+    <div class="wp">
+        <ul class="crumbs">
+            <li><a href="{% url 'home' %}">Home</a>></li>
+        </ul>
     </div>
-    <div class="space"></div>
+</section>
+    <section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <!-- <li><a href="index.html">首页</a>></li> -->
+                <!-- <li>课程讲师</li> -->
+            </ul>
+        </div>
+    </section>
 
-    <div id="gtco-subscribe">
-		<div class="gtco-container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>Subscribe</h2>
-					<p>Be the first to know about the new features.</p>
-				</div>
+
+    <section>
+	<div class="wp butler_list_box list">
+	<div class='left'>
+        <!-- 第1条 -->
+        {% for i in test %}
+            <div class="butler_list layout">
+			<div class="head">
+				<ul class="fl tab_header">
+					<li>初级均分场</li>
+				</ul>
+                <div class="fr butler-num">今天<span class="key">19:30</span>截止&nbsp;&nbsp;&nbsp;</div>
 			</div>
-			<div class="row animate-box">
-				<div class="col-md-12">
-					<form class="form-inline">
-						<div class="col-md-4 col-sm-4">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Your Email">
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="form-group">
-								<label for="name" class="sr-only">Name</label>
-								<input type="text" class="form-control" id="name" placeholder="Your Name">
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">Subscribe</button>
-						</div>
-					</form>
-				</div>
-			</div>
+
+                <dl class="des">
+					<m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi.png"/></m>
+					<dd>
+						<ul class="cont">
+							<li>入场费：<span><img width="12" height="12" class="scrollLoading" src="/static/images/ruchangfei.png">30</span></li>
+							<li>最高奖励：<span><img width="12" height="12" class="scrollLoading" src="/static/images/ruchangfei.png">54</span></li>
+							<li>获奖几率：<span>50%&nbsp;</span></li>
+							<li>参与人数：<span>2767/无限</span></li>
+						</ul>
+					</dd>
+                    <a class="buy buyservice" href="{% url 'select_team' %}"><br/>LET'S<br/>GO</a>
+                </dl>
+
 		</div>
+        {% endfor %}
+
+		<div class="pageturn">
+            <ul class="pagelist">
+                <!-- <li class="active"><a href="?page=1">1</a></li>
+                <li><a href="?page=2" class="page">2</a></li>
+                <li class="long"><a href="?page=2">下一页</a></li> -->
+            </ul>
+        </div>
 	</div>
+    </div>
+</section>
 
-    <footer id="gtco-footer" role="contentinfo">
-		<div class="gtco-container">
-			<div class="row row-p	b-md">
-
-				<div class="col-md-4">
-					<div class="gtco-widget">
-						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat repudiandae cum. Totam cupiditate nostrum ut neque ab?</p>
-					</div>
-				</div>
-
-				<div class="col-md-4 col-md-push-1">
-					<div class="gtco-widget">
-						<h3>Links</h3>
-						<ul class="gtco-footer-links">
-							<li><a href="#gsdk">GitHub</a></li>
-							<li><a href="#">Career</a></li>
-							<li><a href="#">Press</a></li>
-							<li><a href="#">Terms of services</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-4">
-					<div class="gtco-widget">
-						<h3>Get In Touch</h3>
-						<ul class="gtco-quick-contact">
-							<li><a href="#"><i class="icon-phone"></i> +1 929-248-8976</a></li>
-							<li><a href="#"><i class="icon-mail2"></i> xz1661@nyu.edu</a></li>
-                            <li><a href="#"><i class="icon-phone"></i> +1 929-248-8988</a></li>
-							<li><a href="#"><i class="icon-mail2"></i> yc2755@nyu.edu</a></li>
-						</ul>
-					</div>
-				</div>
+<footer>
+		<div class="footer">
+			<div class="wp">
+				<ul class="cont">
+					<li class="logo"><a href=""><img src="/static/images/b_logo.png"/></a></li>
+					<!-- <li class="code"><img src="../images/code.jpg"/><p class="center">扫描关注微信</p></li> -->
+					<li class="third"><img class="fl" src="/static/images/tell.png"/><p class="tell">33333333</p><p class="time">周一至周日 9:00-18:00</p></li>
+				</ul>
 
 			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12">
-					<p class="pull-left">
-                        <small class="block">&copy; Designed by Kang, Xiao, Yizhou</small>
-						<small class="block">&copy; Finished on May 5th 2017</small>
-					</p>
-					<p class="pull-right">
-						<ul class="gtco-social-icons pull-right">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</p>
-				</div>
+			<p class="line"></p>
+			<div class="wp clear">
+                <span class="fl">© Designed by Kang, Xiao, Yizhou</span>
+                <span class="fr">© Finished on May 5th 2017</span>
 			</div>
-
 		</div>
 	</footer>
 
-<!-- end container -->
-</div>
-<!-- end main -->
+<section>
+    <ul class="sidebar">
+        <li class="totop"></li>
+    </ul>
+</section>
+<script src="/static/js/selectUi.js" type='text/javascript'></script>
+<script src="/static/js/deco-common.js" type='text/javascript'></script>
+<script type="text/javascript" src="/static/js/plugins/laydate/laydate.js"></script>
+<script src="/static/js/plugins/layer/layer.js"></script>
+<script src="/static/js/plugins/queryCity/js/public.js" type="text/javascript"></script>
+<script src="/static/js/unslider.js" type="text/javascript"></script>
+<script src="/static/js/plugins/jquery.scrollLoading.js"  type="text/javascript"></script>
+<script src="/static/js/deco-common.js"  type="text/javascript"></script>
+
 </body>
-
-    <script src="/static/jquery/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="/static/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
-
-	<script src="/static/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
-	<script src="/static/assets/js/gsdk-checkbox.js"></script>
-	<script src="/static/assets/js/gsdk-radio.js"></script>
-	<script src="/static/assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="/static/assets/js/get-shit-done.js"></script>
-	
-    <script src="/static/assets/js/custom.js"></script>
-
 </html>

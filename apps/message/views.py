@@ -37,5 +37,25 @@ def getform(request):
     return render(request, 'message_form.html', data)
 
 
+def log_in(request):
+    return render(request, 'log_in.html')
+
+
 def index(request):
-    return render(request, 'index.html')
+    test = [1, 2, 3]
+    return render(request, 'index.html', {'test': test})
+
+
+def select_team(request):
+    return render(request, 'select_team.html')
+
+def usercenter_info(request):
+    return render(request, 'usercenter-info.html')
+
+
+def usercenter_history(request):
+    return render(request, 'usercenter-history.html')
+
+
+def usercenter_rules(request):
+    return render(request, 'usercenter-rules.html')
