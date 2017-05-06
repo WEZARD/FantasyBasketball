@@ -37,5 +37,5 @@ def getform(request):
     return render(request, 'message_form.html', data)
 
 
-def get_navbar(request):
-    return render(request, 'navbar-transparent.html')
+def index(request):
+    return render(request, 'index.html')
