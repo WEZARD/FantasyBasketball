@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from apps.message.views import getform
+from apps.message.views import get_navbar
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^form/$', getform)
+    url(r'^form/$', getform, name='go_form'),
+    url(r'^$', get_navbar, name='go_bar')
 ]

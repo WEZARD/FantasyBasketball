@@ -10,8 +10,13 @@ from .models import UserMessage
 
 def getform(request):
     # all_messages = UserMessage.objects.all()
-    all_messages = UserMessage.objects.filter(name='name1')
-    all_messages.delete()
+    message = None
+    all_messages = UserMessage.objects.filter(name='name2')
+    if all_messages:
+        message = all_messages[0]
+
+    data = {'send_message': message}
+    # all_messages.delete()
     # for message in all_messages:
     #     print message.name
 
@@ -29,4 +34,8 @@ def getform(request):
     #
     #     user_message.save()
 
-    return render(request, 'message_form.html')
+    return render(request, 'message_form.html', data)
+
+
+def get_navbar(request):
+    return render(request, 'navbar-transparent.html')
