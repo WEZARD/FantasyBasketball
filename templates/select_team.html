@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/my_select.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/my_button.css">
 
     <script src="/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
@@ -183,9 +184,12 @@
             </div>
         </div>
     </div>
-    <button onclick="send_all_data()">SUBMIT</button>
 </section>
-
+<section>
+    <div class="myheader2">
+        <a class="super button green fr" onclick="send_all_data()">SUBMIT</a>
+    </div>
+</section>
 
 
 <!-- hidden form to submit -->
@@ -242,7 +246,12 @@
         form.kongqiu_data.value = document.getElementsByName("select_kongqiu")[0].value;
         form.defen_data.value = document.getElementsByName("select_defen")[0].value;
         form.submit();
-        alert("成功！");
+        var zhongfeng = form.zhongfeng_data.value;
+        var daqian = form.daqian_data.value;
+        var xiaoqian = form.xiaoqian_data.value;
+        var kongqiu = form.kongqiu_data.value;
+        var defen = form.defen_data.value;
+        alert("Sending Data:\n" + zhongfeng + "\n" + daqian + "\n" + xiaoqian + "\n" + kongqiu + "\n" + defen);
     }
 </script>
 </body>
