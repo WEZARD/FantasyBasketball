@@ -2,14 +2,14 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-	<title>HOME</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/animate.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title> Fantasy Basketball Manager Home</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
     <script src="/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
@@ -17,52 +17,54 @@
 <body>
 <section class="headerwrap ">
     <header>
-		<div class="header2 header">
- 			<div class="top">
-				<div class="wp">
-					<div class="fl"><p><b>Fantasy Basketball</b></p></div>
-                        <div class="personal">
-                            <dl class="user fr">
-                                <dd>User<img class="down fr" src="/static/images/top_down.png"/></dd>
-                                <dt><img width="20" height="20" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+        <div class="header2 header">
+            <div class="top">
+                <div class="wp">
+                    <div class="fl"><p><b>Fantasy Basketball Manager</b></p></div>
+                    <div class="personal">
+                        <dl class="user fr">
+                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            </dd>
+                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
+                        </dl>
+                        <div class="userdetail">
+                            <dl>
+                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
+                                </dt>
+                                <dd>
+                                    <h2>{{ data.userData.userName }}</h2>
+                                    <p>{{ data.userData.userMoney }}</p>
+                                </dd>
                             </dl>
-                            <div class="userdetail">
-                                <dl>
-                                    <dt><img width="80" height="80" src="/static/media/image/2016/12/default_big_14.png"/></dt>
-                                    <dd>
-                                        <h2>Some Information</h2>
-                                        <p>Some Information</p>
-                                    </dd>
-                                </dl>
-                                <div class="btn">
-                                    <a class="personcenter fl" href="{% url 'user_info' %}">My Profile</a>
-                                    <a class="fr" href="{% url 'log_in' %}">Log out</a>
-                                </div>
+                            <div class="btn">
+                                <a class="personcenter fl" href="{% url 'user_info' %}">My Profile</a>
+                                <a class="fr" href="{% url 'log_in' %}">Log out</a>
                             </div>
                         </div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
 
             <div class="middle">
                 <div class="wp">
-                    <a href="{% url 'home' %}"><img class="fl" src="/static/images/b_logo.png" align="center" /></a>
-                    <h1>Welcome to Fantasy Basketball!</h1>
+                    <a href="{% url 'home' %}"><img class="fl" src="/static/images/b_logo.png" align="center"/></a>
+                    <h1>Welcome to Fantasy Basketball Manager</h1>
                 </div>
             </div>
-            
-            
-			<nav>
-				<div class="nav">
-					<div class="wp">
-						<ul>
-							<li class="active"><a href="{% url 'home' %}">HOME</a></li>
-							<li><a href="{% url 'user_info' %}">ME</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-            
-			</div>
+
+
+            <nav>
+                <div class="nav">
+                    <div class="wp">
+                        <ul>
+                            <li class="active"><a href="{% url 'home' %}">HOME</a></li>
+                            <li><a href="{% url 'user_info' %}">ME</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
     </header>
 </section>
 <!--crumbs start-->
@@ -73,72 +75,91 @@
         </ul>
     </div>
 </section>
-    <section>
-        <div class="wp">
-            <ul  class="crumbs">
-                <!-- <li><a href="index.html">首页</a>></li> -->
-                <!-- <li>课程讲师</li> -->
-            </ul>
+<section>
+    <div class="wp">
+        <ul class="crumbs">
+            <!-- <li><a href="index.html">首页</a>></li> -->
+            <!-- <li>课程讲师</li> -->
+        </ul>
+    </div>
+</section>
+
+
+<section>
+    <div class="wp butler_list_box list">
+        <div class='left'>
+            <!-- 第1条 -->
+            {% for i in data %}
+                <div class="butler_list layout">
+                    <div class="head">
+                        <ul class="fl tab_header">
+                            <li>初级均分场</li>
+                        </ul>
+                        <div class="fr butler-num">今天<span class="key">{{ data.gameData.deadline }}:00</span>截止&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+
+                    <dl class="des">
+                        {% if data.gameData.gamePic == 1 %}
+                            <m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi.png"/>
+                            </m>
+                        {% else %}
+                            <m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi2.png"/>
+                            </m>
+                        {% endif %}
+                        <dd>
+                            <ul class="cont">
+                                <li>入场费：<span><img width="12" height="12" class="scrollLoading"
+                                                   src="/static/images/ruchangfei.png">{{ data.gameData.gameRequired }}</span>
+                                </li>
+                                <li>最高奖励：<span><img width="12" height="12" class="scrollLoading"
+                                                    src="/static/images/ruchangfei.png">{{ data.gameData.gameAward }}</span>
+                                </li>
+                                <li>获奖几率：<span>{{ data.gameData.gameProb }}%&nbsp;</span></li>
+                                <li>参与人数：<span>{{ data.gameData.totalPeople }}/无限</span></li>
+                            </ul>
+                        </dd>
+                        <a class="buy buyservice" href="{% url 'select_team' %}"><br/>LET'S<br/>GO</a>
+                    </dl>
+                </div>
+            {% endfor %}
+
+            <div class="pageturn">
+                <ul class="pagelist">
+                    <!-- <li class="active"><a href="?page=1">1</a></li>
+                    <li><a href="?page=2" class="page">2</a></li>
+                    <li class="long"><a href="?page=2">下一页</a></li> -->
+                </ul>
+            </div>
         </div>
-    </section>
-
-
-    <section>
-	<div class="wp butler_list_box list">
-	<div class='left'>
-        <!-- 第1条 -->
-        {% for i in test %}
-            <div class="butler_list layout">
-			<div class="head">
-				<ul class="fl tab_header">
-					<li>初级均分场</li>
-				</ul>
-                <div class="fr butler-num">今天<span class="key">19:30</span>截止&nbsp;&nbsp;&nbsp;</div>
-			</div>
-
-                <dl class="des">
-					<m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi.png"/></m>
-					<dd>
-						<ul class="cont">
-							<li>入场费：<span><img width="12" height="12" class="scrollLoading" src="/static/images/ruchangfei.png">30</span></li>
-							<li>最高奖励：<span><img width="12" height="12" class="scrollLoading" src="/static/images/ruchangfei.png">54</span></li>
-							<li>获奖几率：<span>50%&nbsp;</span></li>
-							<li>参与人数：<span>2767/无限</span></li>
-						</ul>
-					</dd>
-                    <a class="buy buyservice" href="{% url 'select_team' %}"><br/>LET'S<br/>GO</a>
-                </dl>
-		    </div>
-        {% endfor %}
-
-		<div class="pageturn">
-            <ul class="pagelist">
-                <!-- <li class="active"><a href="?page=1">1</a></li>
-                <li><a href="?page=2" class="page">2</a></li>
-                <li class="long"><a href="?page=2">下一页</a></li> -->
-            </ul>
-        </div>
-	</div>
     </div>
 </section>
 
 <footer>
-		<div class="footer">
-			<div class="wp">
-				<ul class="cont">
-					<li class="logo"><a href=""><img src="/static/images/b_logo.png"/></a></li>
-					<!-- <li class="code"><img src="../images/code.jpg"/><p class="center">扫描关注微信</p></li> -->
-					<li class="third"><img class="fl" src="/static/images/tell.png"/><p class="tell">33333333</p><p class="time">周一至周日 9:00-18:00</p></li>
-				</ul>
+    <div class="footer">
+        <div class="wp">
+            <ul class="cont">
+                <li class="logo"><img src="/static/images/b_logo.png"/></li>
+                <li class="code">
+                    <img style="width:100px; height:100px; border-radius:50%; overflow:hidden;"
+                         src="/static/images/github.png"/>
+                    <p class="center" style="cursor: pointer;"
+                       onclick="window.open('https://github.com/ZXShwan/FantasyBasketball')">
+                        View Source Code</p>
+                </li>
+                <li class="third"><img class="fl" src="/static/images/tell.png"/>
+                    <p class="tell">929-288-8888</p>
+                    <p class="time">Monday to Sunday 9:00-17:00</p></li>
+            </ul>
 
-			</div>
-			<p class="line"></p>
-			<div class="wp clear">
-                <span class="fl">© Designed by Kang, Xiao, Yizhou</span>
-                <span class="fr">© Finished on May 5th 2017</span>
-			</div>
-		</div>
-	</footer>
+        </div>
+        <p class="line"></p>
+        <div class="wp clear">
+            <span class="fl">© Designed by Kang, Xiao, Yizhou</span>
+            <span class="fr">© Finished on May 5th 2017</span>
+        </div>
+    </div>
+</footer>
 
 <section>
     <ul class="sidebar">
@@ -151,8 +172,8 @@
 <script src="/static/js/plugins/layer/layer.js"></script>
 <script src="/static/js/plugins/queryCity/js/public.js" type="text/javascript"></script>
 <script src="/static/js/unslider.js" type="text/javascript"></script>
-<script src="/static/js/plugins/jquery.scrollLoading.js"  type="text/javascript"></script>
-<script src="/static/js/deco-common.js"  type="text/javascript"></script>
+<script src="/static/js/plugins/jquery.scrollLoading.js" type="text/javascript"></script>
+<script src="/static/js/deco-common.js" type="text/javascript"></script>
 
 </body>
 </html>

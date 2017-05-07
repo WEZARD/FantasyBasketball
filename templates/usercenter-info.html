@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>User Profile</title>
+    <title>Fantasy Basketball Manager User Profile</title>
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
@@ -24,19 +24,20 @@
         <div class="header2 header">
             <div class="top">
                 <div class="wp">
-                    <div class="fl"><p>Fantasy Basketball</p></div>
+                    <div class="fl"><p>Fantasy Basketball Manager</p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>bobby<img class="down fr" src="/static/images/top_down.png"/></dd>
-                            <dt><img width="20" height="20" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            </dd>
+                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/media/image/2016/12/default_big_14.png"/>
+                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>Some Information</h2>
-                                    <p>Some Information</p>
+                                    <h2>{{ data.userData.userName }}</h2>
+                                    <p>{{ data.userData.userMoney }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -51,7 +52,7 @@
             <div class="middle">
                 <div class="wp">
                     <a href="{% url 'home' %}"><img class="fl" src="/static/images/b_logo.png"/></a>
-                    <h1>Welcome to Fantasy Basketball</h1>
+                    <h1>Welcome to Fantasy Basketball Manager</h1>
                 </div>
             </div>
         </div>
@@ -95,7 +96,7 @@
                             <label class="changearea" for="avatarUp">
                             <span id="avatardiv" class="pic">
                                 <img width="100" height="100" class="js-img-show" id="avatarShow"
-                                     src="/static/media/image/2016/12/default_big_14.png"/>
+                                     src="/static/images/{{ data.userData.userPicture }}"/>
                             </span>
                                 <span class="fl upload-inp-box" style="margin-left:70px;">
                                 <span class="button btn-green btn-w100" id="jsAvatarBtn">change</span>
@@ -112,7 +113,7 @@
                     <form class="perinform" id="jsEditUserForm" autocomplete="off">
                         <ul class="right">
                             <li>User&nbsp;Name:
-                                <input type="text" name="nick_name" id="nick_name" value="" maxlength="10"
+                                <input type="text" name="nick_name" id="nick_name" value="{{ data.userData.userName }}" maxlength="10"
                                        placeholder="Please input your username">
                                 <i class="error-tips"></i>
                             </li>
@@ -121,19 +122,27 @@
                                 <i class="error-tips"></i>
                             </li> -->
                             <li>Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="male"
-                                                                            checked="checked">Male</label>
-                                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender"
-                                                                                  value="female">Female</label>
+                                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="gender" value="male"
+                                           {% if data.userData.userSex == 0 %}
+                                               checked="checked"
+                                           {% endif %}>Male
+                                </label>
+                                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="gender" value="female"
+                                    {% if data.userData.userSex == 1 %}
+                                           checked="checked"
+                                    {% endif %}>Female
+                                </label>
                             </li>
                             <li class="p_infor_city">Address:&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" name="address" id="address" placeholder="Please input your address"
-                                       value="" maxlength="10">
+                                       value="{{ data.userData.userAddress }}" maxlength="10">
                                 <i class="error-tips"></i>
                             </li>
                             <li>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input class="borderno" type="text" name="email" readonly="readonly"
-                                       value="1213@123.com"/>
+                                       value="{{ data.userData.userEmail }}"/>
                                 <span class="green changeemai_btn">[Change]</span>
                             </li>
                             <li class="button heibtn">
@@ -152,11 +161,11 @@
 
 
 <!--sidebar start-->
-<section>
-    <ul class="sidebar">
-        <li class="totop"></li>
-    </ul>
-</section>
+{#<section>#}
+{#    <ul class="sidebar">#}
+{#        <li class="totop"></li>#}
+{#    </ul>#}
+{#</section>#}
 <!--sidebar end-->
 <!--header start-->
 

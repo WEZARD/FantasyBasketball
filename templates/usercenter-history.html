@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>User Profile</title>
+    <title>Fantasy Basketball Manager User Profile</title>
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
@@ -24,19 +24,20 @@
         <div class="header2 header">
             <div class="top">
                 <div class="wp">
-                    <div class="fl"><p>Fantasy Basketball</p></div>
+                    <div class="fl"><p>Fantasy Basketball Manager</p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>bobby<img class="down fr" src="/static/images/top_down.png"/></dd>
-                            <dt><img width="20" height="20" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            </dd>
+                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/media/image/2016/12/default_big_14.png"/>
+                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>Some Information</h2>
-                                    <p>Some Information</p>
+                                    <h2>{{ data.userData.userName }}</h2>
+                                    <p>{{ data.userData.userMoney }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -51,7 +52,7 @@
             <div class="middle">
                 <div class="wp">
                     <a href="{% url 'home' %}"><img class="fl" src="/static/images/b_logo.png"/></a>
-                    <h1>Welcome to Fantasy Basketball</h1>
+                    <h1>Welcome to Fantasy Basketball Manager</h1>
                 </div>
             </div>
         </div>
@@ -84,7 +85,7 @@
         <div class="right">
             <div class="personal_des Releasecont">
                 <div class="head">
-                    <h1>Fantasy Basketball</h1>
+                    <h1>Fantasy Basketball Manager</h1>
                 </div>
 
             </div>

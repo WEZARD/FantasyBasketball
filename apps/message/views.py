@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import random
+
 from django.shortcuts import render
 
 from .models import UserMessage
+
 
 # Create your views here.
 
@@ -60,9 +63,13 @@ def log_in(request):
     return render(request, 'log_in.html')
 
 
+def register(request):
+    return render(request, 'register.html')
+
+
 def index(request):
-    test = [1, 2, 3]
-    return render(request, 'index.html', {'test': test})
+    data = getData()
+    return render(request, 'index.html', {'data': data})
 
 
 def select_team(request):
@@ -70,12 +77,42 @@ def select_team(request):
 
 
 def usercenter_info(request):
-    return render(request, 'usercenter-info.html')
+    data = getData()
+    return render(request, 'usercenter-info.html', {'data': data})
 
 
 def usercenter_history(request):
-    return render(request, 'usercenter-history.html')
+    data = getData()
+    return render(request, 'usercenter-history.html', {'data': data})
 
 
 def usercenter_rules(request):
-    return render(request, 'usercenter-rules.html')
+    data = getData()
+    return render(request, 'usercenter-rules.html', {'data': data})
+
+
+# 从数据库获取数据，处理后返回给前台显示
+def getData():
+    # 用户数据，用于显示于右上角的框框
+    userName = 'userName1'
+    userPassword = 'password1'
+    userSex = 0
+    userAddress = 'User1 Address'
+    userEmail = 'user1@user1.com'
+    userMoney = 'userMoney1'
+    userPicture = 'userhead.JPG'
+    userData = {'userName': userName, 'userPassword': userPassword, 'userSex': userSex, 'userAddress': userAddress,
+                'userEmail': userEmail, 'userMoney': userMoney, 'userPicture': userPicture}
+
+    # 比赛数据，用于显示在主页的列表中
+    deadline = random.randint(0, 24)
+    gamePic = random.randint(0, 1)
+    gameAward = random.randint(50, 70)
+    gameRequired = random.randint(20, 30)
+    gameProb = random.randint(10, 90)
+    totalPeople = random.randint(1000, 3000)
+    gameData = {'deadline': deadline, 'gamePic': gamePic, 'gameAward': gameAward,
+                'gameRequired': gameRequired, 'gameProb': gameProb, 'totalPeople': totalPeople}
+
+    data = {'userData': userData, 'gameData': gameData}
+    return data
