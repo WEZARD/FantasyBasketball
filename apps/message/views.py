@@ -9,23 +9,23 @@ from .models import UserMessage
 
 
 def getform(request):
-    if request.method == 'POST':
-        zhongfeng = request.POST.get('zhongfeng_data')
-        daqian = request.POST.get('daqian_data')
-        xiaoqian = request.POST.get('xiaoqian_data')
-        kongqiu = request.POST.get('kongqiu_data')
-        defen = request.POST.get('defen_data')
-        print zhongfeng
-        print daqian
-        print xiaoqian
-        print kongqiu
-        print defen
-        user_message = UserMessage()
-        user_message.name = zhongfeng
-        user_message.message = daqian
-        user_message.address = xiaoqian
-        user_message.email = kongqiu
-        user_message.save()
+    # if request.method == 'POST':
+    #     zhongfeng = request.POST.get('zhongfeng_data')
+    #     daqian = request.POST.get('daqian_data')
+    #     xiaoqian = request.POST.get('xiaoqian_data')
+    #     kongqiu = request.POST.get('kongqiu_data')
+    #     defen = request.POST.get('defen_data')
+    #     print zhongfeng
+    #     print daqian
+    #     print xiaoqian
+    #     print kongqiu
+    #     print defen
+    #     user_message = UserMessage()
+    #     user_message.name = zhongfeng
+    #     user_message.message = daqian
+    #     user_message.address = xiaoqian
+    #     user_message.email = kongqiu
+    #     user_message.save()
 
     # all_messages = UserMessage.objects.all()
     # message = None
