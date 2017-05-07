@@ -79,10 +79,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fantasybasketball',
-        'USER': 'sshuser',
-        'PASSWORD': 'sshuser',
-        # 'HOST': '10.77.156.122'
-        'HOST':'127.0.0.1'
+        # 'USER': 'sshuser',
+        # 'PASSWORD': 'sshuser',
+        # # 'HOST': '10.77.156.122'
+        # 'HOST':'127.0.0.1'
+        'USER': 'root',
+        'PASSWORD': '12345678',
+        'HOST': 'fantasybasketball.cxmeyblz4flc.us-west-1.rds.amazonaws.com'
 
     }
 }
