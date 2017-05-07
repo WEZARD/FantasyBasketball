@@ -83,9 +83,12 @@ DATABASES = {
         # 'PASSWORD': '12345678',
         # # 'HOST': '52.53.189.246'
         # 'HOST': '127.0.0.1'
-        'USER': 'root',
+        # 'USER': 'root',
+        # 'PASSWORD': '12345678',
+        # 'HOST': 'fantasybasketball.cxmeyblz4flc.us-west-1.rds.amazonaws.com'
+        'USER': 'user',
         'PASSWORD': '12345678',
-        'HOST': 'fantasybasketball.cxmeyblz4flc.us-west-1.rds.amazonaws.com'
+        'HOST': 'ec2-52-53-189-246.us-west-1.compute.amazonaws.com'
 
     }
 }
