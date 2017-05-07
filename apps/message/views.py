@@ -9,13 +9,25 @@ from .models import UserMessage
 
 
 def getform(request):
-    # all_messages = UserMessage.objects.all()
-    message = None
-    all_messages = UserMessage.objects.filter(name='name2')
-    if all_messages:
-        message = all_messages[0]
+    if request.method == 'POST':
+        zhongfeng = request.POST.get('zhongfeng_data');
+        daqian = request.POST.get('daqian_data');
+        xiaoqian = request.POST.get('xiaoqian_data');
+        kongqiu = request.POST.get('kongqiu_data');
+        defen = request.POST.get('defen_data');
+        print zhongfeng
+        print daqian
+        print xiaoqian
+        print kongqiu
+        print defen
 
-    data = {'send_message': message}
+    # all_messages = UserMessage.objects.all()
+    # message = None
+    # all_messages = UserMessage.objects.filter(name='name2')
+    # if all_messages:
+    #     message = all_messages[0]
+    #
+    # data = {'send_message': message}
     # all_messages.delete()
     # for message in all_messages:
     #     print message.name
@@ -34,7 +46,8 @@ def getform(request):
     #
     #     user_message.save()
 
-    return render(request, 'message_form.html', data)
+    # return render(request, 'message_form.html', data)
+    return render(request, 'log_in.html')
 
 
 def log_in(request):
@@ -48,6 +61,7 @@ def index(request):
 
 def select_team(request):
     return render(request, 'select_team.html')
+
 
 def usercenter_info(request):
     return render(request, 'usercenter-info.html')

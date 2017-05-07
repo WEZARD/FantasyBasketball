@@ -1353,7 +1353,7 @@ textarea:focus {
     width: 460px;
     height: 37px;
     margin-top: 40px;
-    border: 2px solid #717171;
+    border: 0px solid #717171;
     background: #fff;
 }
 
