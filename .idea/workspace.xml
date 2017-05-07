@@ -21,6 +21,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FantasyBasketball/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="83" column="31" lean-forward="false" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="select_team.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/select_team.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/message/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
@@ -104,7 +114,6 @@
         <option value="$PROJECT_DIR$/static/assets/css/icomoon.css" />
         <option value="$PROJECT_DIR$/static/assets/css/gsdk.css" />
         <option value="$PROJECT_DIR$/templates/navbar-transparent.html" />
-        <option value="$PROJECT_DIR$/FantasyBasketball/settings.py" />
         <option value="$PROJECT_DIR$/templates/log_in.html" />
         <option value="$PROJECT_DIR$/FantasyBasketball/urls.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
@@ -116,6 +125,7 @@
         <option value="$PROJECT_DIR$/static/css/my_select.css" />
         <option value="$PROJECT_DIR$/apps/message/views.py" />
         <option value="$PROJECT_DIR$/templates/select_team.html" />
+        <option value="$PROJECT_DIR$/FantasyBasketball/settings.py" />
       </list>
     </option>
   </component>
@@ -878,14 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FantasyBasketball/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -949,6 +951,14 @@
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FantasyBasketball/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="83" column="31" lean-forward="false" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
