@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'fantasybasketball',
         'USER': 'sshuser',
         'PASSWORD': 'sshuser',
-        'HOST': '10.77.156.122'
-        # 'HOST':'127.0.0.1'
+        # 'HOST': '10.77.156.122'
+        'HOST':'127.0.0.1'
 
     }
 }
