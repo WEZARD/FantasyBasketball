@@ -6,7 +6,7 @@ from django.db import models
 
 # Create your models here.
 class UserMessage(models.Model):
-    name = models.CharField(max_length=20, verbose_name=u"username")
+    name = models.CharField(max_length=20, verbose_name=u"name")
     email = models.EmailField(verbose_name=u"email")
     address = models.CharField(max_length=100, verbose_name=u"address")
     message = models.CharField(max_length=500, verbose_name=u"message")
