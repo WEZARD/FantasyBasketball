@@ -20,19 +20,20 @@
         <div class="header2 header">
             <div class="top">
                 <div class="wp">
-                    <div class="fl"><p><b>Fantasy Basketball</b></p></div>
+                    <div class="fl"><p>Fantasy Basketball Manager</p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>User<img class="down fr" src="/static/images/top_down.png"/></dd>
-                            <dt><img width="20" height="20" src="/static/media/image/2016/12/default_big_14.png"/></dt>
+                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            </dd>
+                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/media/image/2016/12/default_big_14.png"/>
+                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>Some Information</h2>
-                                    <p>Some Information</p>
+                                    <h2>{{ data.userData.userName }}</h2>
+                                    <p>{{ data.userData.userMoney }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -89,7 +90,7 @@
         <div class="middle">
             <div>
                 <img width="100" height="100" class="fl" src="/static/images/default_head.png" align="center"/>
-                <h1>选择一名中锋</h1>
+                <h1>Select a center</h1>
                 <div class="fr">
                     <select id="my_select_style" name="select_zhongfeng">
                         <option value="zhongfeng1">中锋1</option>
@@ -106,7 +107,7 @@
         <div class="middle">
             <div>
                 <img width="100" height="100" class="fl" src="/static/images/default_head.png" align="center"/>
-                <h1>选择一名大前锋</h1>
+                <h1>Select a power forward</h1>
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
@@ -127,7 +128,7 @@
         <div class="middle">
             <div>
                 <img width="100" height="100" class="fl" src="/static/images/default_head.png" align="center"/>
-                <h1>选择一名小前锋</h1>
+                <h1>Select a small forward</h1>
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
@@ -148,7 +149,7 @@
         <div class="middle">
             <div>
                 <img width="100" height="100" class="fl" src="/static/images/default_head.png" align="center"/>
-                <h1>选择一名控球后卫</h1>
+                <h1>Select a shooting guard</h1>
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
@@ -169,7 +170,7 @@
         <div class="middle">
             <div>
                 <img width="100" height="100" class="fl" src="/static/images/default_head.png" align="center"/>
-                <h1>选择一名得分后卫</h1>
+                <h1>Select a point guard</h1>
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">

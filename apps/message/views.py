@@ -73,7 +73,8 @@ def index(request):
 
 
 def select_team(request):
-    return render(request, 'select_team.html')
+    data = getData()
+    return render(request, 'select_team.html', {'data': data})
 
 
 def usercenter_info(request):
@@ -113,6 +114,9 @@ def getData():
     totalPeople = random.randint(1000, 3000)
     gameData = {'deadline': deadline, 'gamePic': gamePic, 'gameAward': gameAward,
                 'gameRequired': gameRequired, 'gameProb': gameProb, 'totalPeople': totalPeople}
+
+    # 球员数据
+
 
     data = {'userData': userData, 'gameData': gameData}
     return data
