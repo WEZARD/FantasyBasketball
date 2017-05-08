@@ -1,11 +1,9 @@
 from django.conf.urls import url
 from django.contrib import admin
 from apps.message import views
-import xadmin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^xadmin/', xadmin.site.urls),
     url(r'^form/$', views.getform, name='go_form'),
     url(r'^$', views.index, name='home'),
     url(r'^log_in/$', views.log_in, name='log_in'),
