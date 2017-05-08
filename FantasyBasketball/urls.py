@@ -1,8 +1,10 @@
 from django.conf.urls import url
 from django.contrib import admin
 from apps.message import views
+import settings
 
 urlpatterns = [
+    # url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^form/$', views.getform, name='go_form'),
     url(r'^$', views.index, name='home'),
