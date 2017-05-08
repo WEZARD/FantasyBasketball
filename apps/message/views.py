@@ -117,6 +117,5 @@ def getData():
 
     # 球员数据
 
-
     data = {'userData': userData, 'gameData': gameData}
     return data

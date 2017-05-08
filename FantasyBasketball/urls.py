@@ -16,4 +16,4 @@ urlpatterns = [
     url(r'^user_center/info/$', views.usercenter_info, name='user_info'),
     url(r'^user_center/history/$', views.usercenter_history, name='user_history'),
     url(r'^user_center/rules/$', views.usercenter_rules, name='user_rules')
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
