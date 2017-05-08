@@ -12,7 +12,7 @@ class UserProfile(AbstractUser):
     image = models.ImageField(upload_to='image/%Y/%m', default=u'/static/images/userhead.JPG')
 
     class Meta:
-        verbose_name = 'user_profile'
+        verbose_name = 'User Profile'
         verbose_name_plural = verbose_name
 
     def __unicode__(self):
@@ -23,11 +23,18 @@ class UserProfile(AbstractUser):
 class History(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name=u'user')  # 生成记录对应的用户
     add_time = models.DateTimeField(verbose_name='add_time', default=datetime.now)
-    is_win = models.CharField(max_length=5, choices=((0, 'win'), (1, 'lose')), default=-1)
+    is_win = models.CharField(max_length=5, choices=(('win', 'win'), ('lose', 'lose')), default=-1)
     award = models.IntegerField(verbose_name='award', default=0)
     center = models.CharField(max_length=30, verbose_name='center')
     p_forward = models.CharField(max_length=30, verbose_name='p_forward')
     s_forward = models.CharField(max_length=30, verbose_name='s_forward')
     s_guard = models.CharField(max_length=30, verbose_name='s_guard')
     p_guard = models.CharField(max_length=30, verbose_name='p_guard')
+
+    class Meta:
+        verbose_name = 'History Record'
+        verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return '{0}({1})'.format(self.user, self.is_win)
 

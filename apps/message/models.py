@@ -13,3 +13,6 @@ class UserMessage(models.Model):
 
     class Meta:
         verbose_name = u"message"
+
+    def __unicode__(self):
+        return self.name
