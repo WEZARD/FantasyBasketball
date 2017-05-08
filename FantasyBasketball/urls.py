@@ -1,10 +1,12 @@
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
 from apps.message import views
 import settings
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^form/$', views.getform, name='go_form'),
     url(r'^$', views.index, name='home'),
@@ -14,4 +16,4 @@ urlpatterns = [
     url(r'^user_center/info/$', views.usercenter_info, name='user_info'),
     url(r'^user_center/history/$', views.usercenter_history, name='user_history'),
     url(r'^user_center/rules/$', views.usercenter_rules, name='user_rules')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
