@@ -15,7 +15,7 @@ import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+# sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -26,7 +26,11 @@ SECRET_KEY = '$+@n=*uh78@r3bdkle&a+r@6agy9tjpp#w43rion080vt&9t48'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'127.0.0.1', u'localhost', u'fantasybasketball.kfru3bdxky.us-west-1.elasticbeanstalk.com']
+# ALLOWED_HOSTS = [u'127.0.0.1', u'localhost', u'fantasybasketball.kfru3bdxky.us-west-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['*']
+# AUTHENTICATION_BACKENDS = (
+#     'users.views.CustomBackend',
+# )
 
 # Application definition
 
@@ -37,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.game',
     'apps.users',
     'apps.message'
 ]
@@ -57,8 +62,7 @@ ROOT_URLCONF = 'FantasyBasketball.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,5 +129,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'all_static')

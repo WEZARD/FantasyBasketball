@@ -1,15 +1,3 @@
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Log In</title>#}
-{#</head>#}
-{#<body>#}
-{#<a href="{% url "home" %}"><h1>LOG IN PAGE</h1></a>#}
-{#</body>#}
-{#</html>#}
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +11,9 @@
 
     <script type="text/javascript">
         function InputCheck(login_form) {
-            if (login_form.email.value == "") {
-                alert("Please enter your email!");
-                login_form.email.focus();
+            if (login_form.username.value == "") {
+                alert("Please enter your username!");
+                login_form.username.focus();
                 return (false);
             }
 
@@ -96,24 +84,25 @@
             </div>
             <div class="fl form-box">
                 <h2>Log In</h2>
-                <form id="email_login_form" name="login_form" method="post" action="login.php"
+                <form id="email_login_form" name="login_form" method="post" action="{% url 'log_in' %}"
                       onSubmit="return InputCheck(this)" autocomplete="off">
 
                     <div class="form-group marb20 ">
-                        <label>email</label>
-                        <input name="email" id="id_email" type="text" placeholder="email"/>
+                        <label>username</label>
+                        <input name="username" id="id_email" type="text" placeholder="username"/>
                     </div>
 
                     <div class="form-group marb8 ">
                         <label>password</label>
                         <input name="password" id="id_password" type="password" placeholder="password"/>
                     </div>
-
+{#                    <div class="error btns login-form-tips" id="jsLoginTips">{{ msg }}</div>#}
                     <div class="auto-box marb38">
                         <a class="fr" href="forgetpwd.html">Forget password？</a>
                     </div>
 
                     <input class="btn btn-green" id="jsLoginBtn" type="submit" value="Log In" name="submit"/>
+                    {% csrf_token %}
                 </form>
                 <p class="form-p">Don't have an account？<a href="{% url 'register' %}">[Register Now]</a></p>
             </div>
