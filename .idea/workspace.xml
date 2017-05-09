@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/game/migrations/0003_auto_20170508_2223.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/game/migrations/0004_auto_20170509_0201.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/game/migrations/0005_auto_20170509_0215.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/game/migrations/0006_auto_20170509_0354.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/users/migrations/0006_auto_20170509_0201.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/users/migrations/0007_auto_20170509_0215.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/users/migrations/0008_userprofile_money.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/123.html" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/templates/login.php" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/templates/register.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
