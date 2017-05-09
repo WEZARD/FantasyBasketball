@@ -95,58 +95,58 @@
                         <li class="active"><a href="">GAME HISTORY</a></li>
                     </ul>
                 </div>
-                <!-- 第1条 -->
-                <div class="butler_list layout">
-                    <div class="head">
-                        <ul class="fl tab_header">
-                            <li>5月2日</li>
-                        </ul>
-                        <div class="fr butler-num"><span class="key">Win&nbsp;&nbsp;<span><img width="12" height="12"
-                                                                                               class="scrollLoading"
-                                                                                               src="/static/images/ruchangfei.png">55</span></span>&nbsp;&nbsp;&nbsp;
-                        </div>
-                    </div>
+                {% if data.historyData %}
+                    {% for record in data.historyData %}
+                        <!-- 每条记录 -->
+                        <div class="butler_list layout">
+                            <div class="head">
+                                <ul class="fl tab_header">
+                                    <li>{{ record.add_time }}</li>
+                                </ul>
+                                <div class="fr butler-num"><span class="key">{{ record.is_win }}&nbsp;&nbsp;<span><img width="12"
+                                                                                                       height="12"
+                                                                                                       class="scrollLoading"
+                                                                                                       src="/static/images/ruchangfei.png">{{ record.total_point }}</span></span>&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
 
-                    <dl class="des">
-                        <m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi.png"/></m>
-                        <dd>
-                            <ul class="cont">
-                                <li>入场费：<span><img width="12" height="12" class="scrollLoading"
-                                                   src="/static/images/ruchangfei.png">30</span></li>
-                                <li>最高奖励：<span><img width="12" height="12" class="scrollLoading"
-                                                    src="/static/images/ruchangfei.png">54</span></li>
-                                <li>获奖几率：<span>50%&nbsp;</span></li>
-                                <li>参与人数：<span>2767/无限</span></li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </div>
-                <!-- 第2条 -->
-                <div class="butler_list layout">
-                    <div class="head">
-                        <ul class="fl tab_header">
-                            <li>5月4日</li>
-                        </ul>
-                        <div class="fr butler-num"><span class="key">Lose&nbsp;&nbsp;<span><img width="12" height="12"
-                                                                                                class="scrollLoading"
-                                                                                                src="/static/images/ruchangfei.png">42</span></span>&nbsp;&nbsp;&nbsp;
+                            <dl class="des">
+                                <m><img width="100" height="100" class="scrollLoading"
+                                        src="/static/images/zuanshi.png"/></m>
+                                <dd>
+                                    <ul class="cont">
+                                        <li><b>Center:&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            </b><span>{{ record.c_name }}</span></li>
+                                        <li><b>Power Forward:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;
+                                            </b><span>{{ record.pf_name }}</span></li>
+                                        <li><b>Small Forward:&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            </b><span>{{ record.sf_name }}&nbsp;</span></li>
+                                        <li><b>Shooting Guard:&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>{{ record.sg_name }}</span></li>
+                                        <li><b>Point Guard:&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>{{ record.pg_name }}</span></li>
+                                    </ul>
+                                </dd>
+                            </dl>
                         </div>
-                    </div>
-
-                    <dl class="des">
-                        <m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi2.png"/></m>
-                        <dd>
-                            <ul class="cont">
-                                <li>入场费：<span><img width="12" height="12" class="scrollLoading"
-                                                   src="/static/images/ruchangfei.png">30</span></li>
-                                <li>最高奖励：<span><img width="12" height="12" class="scrollLoading"
-                                                    src="/static/images/ruchangfei.png">54</span></li>
-                                <li>获奖几率：<span>50%&nbsp;</span></li>
-                                <li>参与人数：<span>2767/无限</span></li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </div>
+                    {% endfor %}
+                {% else %}
+                    <section class="headerwrap">
+                        <div class="header2 header">
+                            <h1>No Record</h1>
+                        </div>
+                    </section>
+                {% endif %}
 
                 <div class="pageturn pagerright">
 

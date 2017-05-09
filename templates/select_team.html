@@ -92,10 +92,10 @@
                 <img width="100" height="100" class="fl" src="/static/images/default_head.png" align="center"/>
                 <h1>Select a center</h1>
                 <div class="fr">
-                    <select id="my_select_style" name="select_zhongfeng">
-                        <option value="zhongfeng1">中锋1</option>
-                        <option value="zhongfeng2">中锋2</option>
-                        <option value="zhongfeng3">中锋3</option>
+                    <select id="my_select_style" name="select_c">
+                        {% for c in data.playerData.c_players %}
+                            <option value="{{ c.name }}">{{ c.name }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -111,10 +111,10 @@
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
-                            <select id="my_select_style" name="select_daqian">
-                                <option value="daqian1">大前1</option>
-                                <option value="daqian2">大前2</option>
-                                <option value="daqian3">大前3</option>
+                            <select id="my_select_style" name="select_pf">
+                                {% for pf in data.playerData.pf_players %}
+                                    <option value="{{ pf.name }}">{{ pf.name }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -132,10 +132,10 @@
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
-                            <select id="my_select_style" name="select_xiaoqian">
-                                <option value="xiaoqian1">小前1</option>
-                                <option value="xiaoqian2">小前2</option>
-                                <option value="xiaoqian3">小前3</option>
+                            <select id="my_select_style" name="select_sf">
+                                {% for sf in data.playerData.sf_players %}
+                                    <option value="{{ sf.name }}">{{ sf.name }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -153,10 +153,10 @@
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
-                            <select id="my_select_style" name="select_kongqiu">
-                                <option value="kongqiu1">控球1</option>
-                                <option value="kongqiu2">控球2</option>
-                                <option value="kongqiu3">控球3</option>
+                            <select id="my_select_style" name="select_sg">
+                                {% for sg in data.playerData.sg_players %}
+                                    <option value="{{ sg.name }}">{{ sg.name }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -174,10 +174,10 @@
                 <div class="searchbox fr">
                     <div class="selectContainer fr">
                         <div class="fr">
-                            <select id="my_select_style" name="select_defen">
-                                <option value="defen1">得分1</option>
-                                <option value="defen2">得分2</option>
-                                <option value="defen3">得分3</option>
+                            <select id="my_select_style" name="select_pg">
+                                {% for pg in data.playerData.pg_players %}
+                                    <option value="{{ pg.name }}">{{ pg.name }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -194,12 +194,17 @@
 
 
 <!-- hidden form to submit -->
-<form id="hidden_form" action="{% url 'go_form' %}" method="post" name="data_form">
-    <input type="hidden" name="zhongfeng_data" value=3>
-    <input type="hidden" name="daqian_data" value=3>
-    <input type="hidden" name="xiaoqian_data" value=3>
-    <input type="hidden" name="kongqiu_data" value=3>
-    <input type="hidden" name="defen_data" value=3>
+<form id="hidden_form" action="{% url 'user_history' %}" method="post" name="data_form">
+    <label>c_data</label>
+    <input type="hidden" name="c_data" value=3>
+    <label>pf_data</label>
+    <input type="hidden" name="pf_data" value=3>
+    <label>sf_data</label>
+    <input type="hidden" name="sf_data" value=3>
+    <label>sg_data</label>
+    <input type="hidden" name="sg_data" value=3>
+    <label>pg_data</label>
+    <input type="hidden" name="pg_data" value=3>
     {% csrf_token %}
 </form>
 
@@ -247,18 +252,33 @@
     // send all selected data
     function send_all_data() {
         var form = document.data_form;
-        form.zhongfeng_data.value = document.getElementsByName("select_zhongfeng")[0].value;
-        form.daqian_data.value = document.getElementsByName("select_daqian")[0].value;
-        form.xiaoqian_data.value = document.getElementsByName("select_xiaoqian")[0].value;
-        form.kongqiu_data.value = document.getElementsByName("select_kongqiu")[0].value;
-        form.defen_data.value = document.getElementsByName("select_defen")[0].value;
+        form.c_data.value = document.getElementsByName("select_c")[0].value;
+        form.pf_data.value = document.getElementsByName("select_pf")[0].value;
+        form.sf_data.value = document.getElementsByName("select_sf")[0].value;
+        form.sg_data.value = document.getElementsByName("select_sg")[0].value;
+        form.pg_data.value = document.getElementsByName("select_pg")[0].value;
+        if(form.c_data.value == ''){
+            alert('Please select a center!');
+            return false;
+        }
+        if(form.pf_data.value == ''){
+            alert('Please select a power forward!');
+            return false;
+        }
+        if(form.sf_data.value == ''){
+            alert('Please select a small forward!');
+            return false;
+        }
+        if(form.sg_data.value == ''){
+            alert('Please select a shooting guard!');
+            return false;
+        }
+        if(form.pg_data.value == ''){
+            alert('Please select a point guard!');
+            return false;
+        }
         form.submit();
-        var zhongfeng = form.zhongfeng_data.value;
-        var daqian = form.daqian_data.value;
-        var xiaoqian = form.xiaoqian_data.value;
-        var kongqiu = form.kongqiu_data.value;
-        var defen = form.defen_data.value;
-        alert("Sending Data:\n" + zhongfeng + "\n" + daqian + "\n" + xiaoqian + "\n" + kongqiu + "\n" + defen);
+        alert("Your lineup has been successfully submitted!");
     }
 </script>
 </body>

@@ -13,6 +13,7 @@ class UserProfile(AbstractUser):
 
     gender = models.IntegerField(choices=((0, u'male'), (1, u'female')), default=0)
     address = models.CharField(max_length=100, default=u'')
+    money = models.IntegerField(verbose_name=u'UserMoney', default=200)
     image = models.ImageField(upload_to=upload_dir, default=default_pic)
 
     class Meta:
@@ -30,11 +31,11 @@ class History(models.Model):
     is_win = models.CharField(max_length=5, choices=((u'win', u'win'), (u'lose', u'lose')), default=u'win')
     award = models.IntegerField(verbose_name='award', default=0)
 
-    center_id = models.CharField(max_length=10, verbose_name=u'CenterID', default=u'00000000')
-    p_forward_id = models.CharField(max_length=10, verbose_name=u'P_ForwardID', default=u'00000000')
-    s_forward_id = models.CharField(max_length=10, verbose_name=u'S_ForwardID', default=u'00000000')
-    s_guard_id = models.CharField(max_length=10, verbose_name=u'S_GuardID', default=u'00000000')
-    p_guard_id = models.CharField(max_length=10, verbose_name=u'P_GuardID', default=u'00000000')
+    c_name = models.CharField(max_length=10, verbose_name=u'Center_Name', default=u'')
+    pf_name = models.CharField(max_length=10, verbose_name=u'PF_Name', default=u'')
+    sf_name = models.CharField(max_length=10, verbose_name=u'SF_Name', default=u'')
+    sg_name = models.CharField(max_length=10, verbose_name=u'SG_Name', default=u'')
+    pg_name = models.CharField(max_length=10, verbose_name=u'PG_Name', default=u'')
     total_point = models.FloatField(verbose_name=u'Sum', default=0)
 
     class Meta:

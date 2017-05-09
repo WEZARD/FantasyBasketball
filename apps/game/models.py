@@ -13,6 +13,7 @@ class Game(models.Model):
     teamname2 = models.CharField(max_length=20, verbose_name=u'TeamName2', default=u'')
     date = models.CharField(max_length=20, verbose_name=u'Date', default=datetime.now().strftime('%Y-%m-%d'))
     hour = models.CharField(max_length=20, verbose_name=u'Hour', default=datetime.now().strftime('%H:%M'))
+    picture = models.IntegerField(verbose_name=u'GamePicture', default=1)
 
     class Meta:
         verbose_name = u'Game'

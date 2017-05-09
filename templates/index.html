@@ -23,17 +23,18 @@
                     <div class="fl"><p><b>Fantasy Basketball Manager</b></p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            <dd>{{ data.userData.username }}<img class="down fr" src="/static/images/top_down.png"/>
                             </dd>
-                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
+                            <dt><img width="20" height="20" src="/{{ data.userData.image }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
+{#                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.image }}"/>#}
+                                  <dt><img width="80" height="80" src="/{{ data.userData.image }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>{{ data.userData.userName }}</h2>
-                                    <p>{{ data.userData.userMoney }}</p>
+                                    <h2>{{ data.userData.username }}</h2>
+                                    <p><b>Money:&nbsp;&nbsp;&nbsp;</b>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -88,47 +89,76 @@
 <section>
     <div class="wp butler_list_box list">
         <div class='left'>
-            <!-- 第1条 -->
-            {% for i in data %}
-                <div class="butler_list layout">
-                    <div class="head">
-                        <ul class="fl tab_header">
-                            <li>初级均分场</li>
-                        </ul>
-                        <div class="fr butler-num">今天<span class="key">{{ data.gameData.deadline }}:00</span>截止&nbsp;&nbsp;&nbsp;
+            {% if data.gameData %}
+                <!-- 每条比赛 -->
+                {% for game in data.gameData %}
+                    <div class="butler_list layout">
+                        <div class="head">
+                            <ul class="fl tab_header">
+                                <li>{{ game.date }}</li>
+                            </ul>
+                            <div class="fr butler-num">Open Until <span class="key">{{ game.hour }}</span>&nbsp;&nbsp;&nbsp;
+                            </div>
                         </div>
+
+                        <dl class="des">
+                            {% if game.picture == 1 %}
+                                <m><img width="100" height="100" class="scrollLoading"
+                                        src="/static/images/zuanshi.png"/>
+                                </m>
+                            {% else %}
+                                <m><img width="100" height="100" class="scrollLoading"
+                                        src="/static/images/zuanshi2.png"/>
+                                </m>
+                            {% endif %}
+                            <dd>
+                                <ul class="cont">
+                                    <li>入场费：<span><img width="12" height="12" class="scrollLoading"
+                                                       src="/static/images/ruchangfei.png">{{ data.gameData.gameRequired }}</span>
+                                    </li>
+                                    <li>最高奖励：<span><img width="12" height="12" class="scrollLoading"
+                                                        src="/static/images/ruchangfei.png">{{ data.gameData.gameAward }}</span>
+                                    </li>
+                                    <li><b>Home:</b><span>&nbsp;&nbsp;&nbsp;&nbsp;{{ game.teamname1 }}</span></li>
+                                    <li><b>Away:</b><span>&nbsp;&nbsp;&nbsp;&nbsp;{{ game.teamname2 }}</span></li>
+                                </ul>
+                            </dd>
+
+                            <!-- hidden form to submit -->
+                            <form id="hidden_form" action="{% url 'select_team' %}" method="post"
+                                  name="game{{ game.id }}">
+                                <input type="hidden" name="team1" value="{{ game.teamname1 }}">
+                                <input type="hidden" name="team2" value="{{ game.teamname2 }}">
+                                {% csrf_token %}
+                            </form>
+                            <script type="text/javascript">
+                                // send all selected data
+                                function game_submit(select_game) {
+                                    var game_id = "game" + select_game.name;
+                                    var forms = document.getElementsByTagName('form');
+                                    for (var i = 0; i < forms.length; i++) {
+                                        if (forms[i].name == game_id) {
+                                            forms[i].submit();
+                                        }
+                                    }
+                                }
+                            </script>
+                            <a name="{{ game.id }}" class="buy buyservice" onclick="game_submit(this)"><br/>LET'S<br/>GO</a>
+                        </dl>
                     </div>
 
-                    <dl class="des">
-                        {% if data.gameData.gamePic == 1 %}
-                            <m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi.png"/>
-                            </m>
-                        {% else %}
-                            <m><img width="100" height="100" class="scrollLoading" src="/static/images/zuanshi2.png"/>
-                            </m>
-                        {% endif %}
-                        <dd>
-                            <ul class="cont">
-                                <li>入场费：<span><img width="12" height="12" class="scrollLoading"
-                                                   src="/static/images/ruchangfei.png">{{ data.gameData.gameRequired }}</span>
-                                </li>
-                                <li>最高奖励：<span><img width="12" height="12" class="scrollLoading"
-                                                    src="/static/images/ruchangfei.png">{{ data.gameData.gameAward }}</span>
-                                </li>
-                                <li>获奖几率：<span>{{ data.gameData.gameProb }}%&nbsp;</span></li>
-                                <li>参与人数：<span>{{ data.gameData.totalPeople }}/无限</span></li>
-                            </ul>
-                        </dd>
-                        <a class="buy buyservice" href="{% url 'select_team' %}"><br/>LET'S<br/>GO</a>
-                    </dl>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <section class="headerwrap">
+                    <div class="header2 header">
+                        <h1>No Game Today</h1>
+                    </div>
+                </section>
+            {% endif %}
+
 
             <div class="pageturn">
                 <ul class="pagelist">
-                    <!-- <li class="active"><a href="?page=1">1</a></li>
-                    <li><a href="?page=2" class="page">2</a></li>
-                    <li class="long"><a href="?page=2">下一页</a></li> -->
                 </ul>
             </div>
         </div>

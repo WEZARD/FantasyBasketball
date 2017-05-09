@@ -10,7 +10,7 @@ from .models import Game, Player, Point
 
 # Register Game Table
 class GameAdmin(admin.ModelAdmin):
-    list_display = ['teamname1', 'teamname2', 'date', 'hour']
+    list_display = ['id', 'teamname1', 'teamname2', 'date', 'hour']
     search_fields = ['teamname1', 'teamname2', 'date', 'hour']
     list_filter = ['teamname1', 'teamname2', 'date', 'hour']
 
