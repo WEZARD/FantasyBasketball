@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from datetime import datetime
-import requests
+# import requests
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -82,13 +82,13 @@ class RegisterView(View):
             # session for saving data
             setSession(request, new_user)
             # upload to ES
-            upload_data = {'id': new_user.id, 'username': new_user.username, 'password': new_user.password,
-                           'email': new_user.email, 'gender': new_user.gender, 'address': new_user.address,
-                           'image': new_user.image, 'money': new_user.money, 'totalpoints': new_user.total_points,
-                           'rank': new_user.rank}
-            print requests.post(
-                'http://search-fantasybasketball-cf2w76ymdcubcuigezgqpmvhya.us-west-1.es.amazonaws.com/user/profile',
-                json=upload_data)
+            # upload_data = {'id': new_user.id, 'username': new_user.username, 'password': new_user.password,
+            #                'email': new_user.email, 'gender': new_user.gender, 'address': new_user.address,
+            #                'image': new_user.image, 'money': new_user.money, 'totalpoints': new_user.total_points,
+            #                'rank': new_user.rank}
+            # print requests.post(
+            #     'http://search-fantasybasketball-cf2w76ymdcubcuigezgqpmvhya.us-west-1.es.amazonaws.com/user/profile',
+            #     json=upload_data)
 
             login_code = 0
             gameData = getGameData()
@@ -154,15 +154,15 @@ class UserHistoryView(View):
         record.save()
 
         # upload to ES
-        upload_data = {'id': record.id, 'addtime': record.add_time, 'iswin': record.is_win, 'award': record.award,
-                       'userid': record.user_id, 'totalpoints': record.total_point, 'c_name': record.c_name,
-                       'pf_name': record.pf_name, 'sf_name': record.sf_name, 'sg_name': record.sg_name,
-                       'pg_name': record.pg_name, 'c_score': record.c_score, 'pf_score': record.pf_score,
-                       'sf_score': record.sf_score, 'sg_score': record.sg_score, 'pg_score': record.pg_score,
-                       'picture': record.picture, 'isgameover': record.IsGameOver}
-        print requests.post(
-            'http://search-fantasybasketball-cf2w76ymdcubcuigezgqpmvhya.us-west-1.es.amazonaws.com/user/history',
-            json=upload_data)
+        # upload_data = {'id': record.id, 'addtime': record.add_time, 'iswin': record.is_win, 'award': record.award,
+        #                'userid': record.user_id, 'totalpoints': record.total_point, 'c_name': record.c_name,
+        #                'pf_name': record.pf_name, 'sf_name': record.sf_name, 'sg_name': record.sg_name,
+        #                'pg_name': record.pg_name, 'c_score': record.c_score, 'pf_score': record.pf_score,
+        #                'sf_score': record.sf_score, 'sg_score': record.sg_score, 'pg_score': record.pg_score,
+        #                'picture': record.picture, 'isgameover': record.IsGameOver}
+        # print requests.post(
+        #     'http://search-fantasybasketball-cf2w76ymdcubcuigezgqpmvhya.us-west-1.es.amazonaws.com/user/history',
+        #     json=upload_data)
 
         userData = getUserData(request)
         historyData = getHistory(user)
