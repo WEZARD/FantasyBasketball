@@ -26,8 +26,7 @@ SECRET_KEY = '$+@n=*uh78@r3bdkle&a+r@6agy9tjpp#w43rion080vt&9t48'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = [u'127.0.0.1', u'localhost', u'fantasybasketball.kfru3bdxky.us-west-1.elasticbeanstalk.com']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [u'127.0.0.1', u'localhost', u'fantasybasketball.kfru3bdxky.us-west-1.elasticbeanstalk.com']
 # AUTHENTICATION_BACKENDS = (
 #     'users.views.CustomBackend',
 # )
