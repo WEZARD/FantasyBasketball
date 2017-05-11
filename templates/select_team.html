@@ -23,17 +23,17 @@
                     <div class="fl"><p>Fantasy Basketball Manager</p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            <dd>{{ data.userData.username }}<img class="down fr" src="/static/images/top_down.png"/>
                             </dd>
-                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
+                            <dt><img width="20" height="20" src="/{{ data.userData.image }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
+                                <dt><img width="80" height="80" src="/{{ data.userData.image }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>{{ data.userData.userName }}</h2>
-                                    <p>{{ data.userData.userMoney }}</p>
+                                    <h2>{{ data.userData.username }}</h2>
+                                    <p>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">

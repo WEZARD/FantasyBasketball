@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/lq.datetimepick.css"/>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
@@ -103,20 +104,21 @@
                                 <ul class="fl tab_header">
                                     <li>{{ record.add_time }}</li>
                                 </ul>
-                                <div class="fr butler-num"><span class="key">{{ record.is_win }}&nbsp;&nbsp;<span><img width="12"
-                                                                                                       height="12"
-                                                                                                       class="scrollLoading"
-                                                                                                       src="/static/images/ruchangfei.png">{{ record.total_point }}</span></span>&nbsp;&nbsp;&nbsp;
+                                <div class="fr butler-num"><span class="key">{{ record.is_win }}&nbsp;&nbsp;<span><img
+                                        width="12"
+                                        height="12"
+                                        class="scrollLoading"
+                                        src="/static/images/ruchangfei.png">{{ record.total_point }}</span></span>&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
 
                             <dl class="des">
                                 {% if record.picture == 1 %}
                                     <m><img width="100" height="100" class="scrollLoading"
-                                        src="/static/images/zuanshi.png"/></m>
+                                            src="/static/images/zuanshi.png"/></m>
                                 {% else %}
                                     <m><img width="100" height="100" class="scrollLoading"
-                                        src="/static/images/zuanshi.png"/></m>
+                                            src="/static/images/zuanshi.png"/></m>
                                 {% endif %}
 
                                 <dd>
@@ -125,26 +127,51 @@
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
-                                            </b><span>{{ record.c_name }}</span></li>
+                                        </b><span>{{ record.c_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                id="cScore{{ record.id }}">{{ record.c_score }}</span></span>
+                                        </li>
                                         <li><b>Power Forward:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;
-                                            </b><span>{{ record.pf_name }}</span></li>
+                                        </b><span>{{ record.pf_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                id="pfScore{{ record.id }}">{{ record.pf_score }}</span></span></li>
                                         <li><b>Small Forward:&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
-                                            </b><span>{{ record.sf_name }}&nbsp;</span></li>
+                                        </b><span>{{ record.sf_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                id="sfScore{{ record.id }}">{{ record.sf_score }}</span></span></li>
                                         <li><b>Shooting Guard:&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        </b><span>{{ record.sg_name }}</span></li>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>{{ record.sg_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                id="sgScore{{ record.id }}">{{ record.sg_score }}</span></span</li>
                                         <li><b>Point Guard:&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        </b><span>{{ record.pg_name }}</span></li>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>{{ record.pg_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                id="pgScore{{ record.id }}">{{ record.pg_score }}</span></span></li>
                                     </ul>
                                 </dd>
                             </dl>
                         </div>
+                        <script type="text/javascript">
+                            function updateScore() {
+                                _update = {
+                                    url: '{% url 'updateScore' %}',
+                                    type: 'GET',
+                                    data: {recordID: {{ record.id }}, csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()},
+
+                                    success: function (score) {
+                                        $('#cScore{{ record.id }}').text(score.c_score);
+                                        $('#pfScore{{ record.id }}').text(score.pf_score);
+                                        $('#sfScore{{ record.id }}').text(score.sf_score);
+                                        $('#sgScore{{ record.id }}').text(score.sg_score);
+                                        $('#pgScore{{ record.id }}').text(score.pg_score);
+                                    }
+                                };
+                                $.ajax(_update);
+                            }
+                            setInterval(updateScore, 3000);
+                        </script>
                     {% endfor %}
                 {% else %}
                     <section class="headerwrap">

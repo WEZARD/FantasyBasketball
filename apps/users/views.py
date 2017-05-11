@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import random
 from datetime import datetime
 
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
@@ -14,7 +15,9 @@ from django.contrib.auth.backends import ModelBackend
 from .models import UserProfile
 from .forms import LoginForm, RegisterForm
 from .models import History, UserProfile
+from game.models import Player
 from game.views import getGameData, getUserData
+
 
 # class CustomBackend(ModelBackend):
 #     def authenticate(self, request, username=None, password=None, **kwargs):
@@ -34,7 +37,6 @@ def test(request):
 
 # 用户登录页面
 class LoginView(View):
-
     def get(self, request):
         return render(request, 'log_in.html')
 
@@ -89,7 +91,7 @@ class RegisterView(View):
             data = {'code': register_code}
             return render(request, 'register.html', {'data': data})
 
-        # return render(request, 'register.html', {'register_form': register_form})
+            # return render(request, 'register.html', {'register_form': register_form})
 
 
 # 用户注册页面
@@ -120,7 +122,7 @@ def register(request):
 
     register_code = 0
     data = {'code': register_code}
-    return render(request, 'register.html', {'data':data})
+    return render(request, 'register.html', {'data': data})
 
 
 # 用户中心信息页面
@@ -152,15 +154,19 @@ class UserHistoryView(View):
             return render(request, 'usercenter-history.html', {'data': data})
 
         add_time = datetime.now().strftime('%Y-%m-%d')
-        record = History()
-        record.add_time = add_time
-        record.c_name = c
-        record.pf_name = pf
-        record.sf_name = sf
-        record.sg_name = sg
-        record.pg_name = pg
-        record.user = user
+
+        c_score = Player.objects.get(name=c).fantasy_score
+        pf_score = Player.objects.get(name=pf).fantasy_score
+        sf_score = Player.objects.get(name=sf).fantasy_score
+        sg_score = Player.objects.get(name=sg).fantasy_score
+        pg_score = Player.objects.get(name=pg).fantasy_score
+
+        record = History(add_time=add_time, c_name=c, pf_name=pf, sf_name=sf, sg_name=sg, pg_name=pg, user=user,
+                         c_score=c_score, pf_score=pf_score, sf_score=sf_score, sg_score=sg_score, pg_score=pg_score)
         record.save()
+
+        historyData = getHistory(user)
+        data = {'userData': userData, 'historyData': historyData}
         return render(request, 'usercenter-history.html', {'data': data})
 
     def get(self, request):
@@ -169,6 +175,7 @@ class UserHistoryView(View):
         historyData = getHistory(user)
         data = {'userData': userData, 'historyData': historyData}
         return render(request, 'usercenter-history.html', {'data': data})
+
 
 # 用户中心游戏规则页面
 class UserRulesView(View):
@@ -188,10 +195,24 @@ def getHistory(user):
 
 # 设置用户session
 def setSession(request, user):
-
     request.session['username'] = user.username
     request.session['money'] = user.money
     request.session['email'] = user.email
     request.session['gender'] = user.gender
     request.session['image'] = user.image
     request.session['address'] = user.address
+
+
+# 更新数据
+def updateScore(request):
+    recordID = request.GET.get('recordID', None)
+    if recordID is not None:
+        record = History.objects.get(id=recordID)
+        c_score = record.c_score
+        pf_score = record.pf_score
+        sf_score = record.sf_score
+        sg_score = record.sg_score
+        pg_score = record.pg_score
+        data = {'c_score': c_score, 'pf_score': pf_score, 'sf_score': sf_score, 'sg_score': sg_score,
+                'pg_score': pg_score}
+        return JsonResponse(data)

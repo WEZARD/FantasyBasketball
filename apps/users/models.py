@@ -32,12 +32,18 @@ class History(models.Model):
     is_win = models.CharField(max_length=10, verbose_name=u'result', default=u'submitted')
     award = models.IntegerField(verbose_name='award', default=0)
     picture = models.IntegerField(verbose_name=u'GamePicture', default=1)
+    # game_id = models.CharField(max_length=3, verbose_name=u'gameID', default=0)
 
     c_name = models.CharField(max_length=10, verbose_name=u'Center_Name', default=u'')
     pf_name = models.CharField(max_length=10, verbose_name=u'PF_Name', default=u'')
     sf_name = models.CharField(max_length=10, verbose_name=u'SF_Name', default=u'')
     sg_name = models.CharField(max_length=10, verbose_name=u'SG_Name', default=u'')
     pg_name = models.CharField(max_length=10, verbose_name=u'PG_Name', default=u'')
+    c_score = models.IntegerField(verbose_name=u'c_score', default=0)
+    pf_score = models.IntegerField(verbose_name=u'pf_score', default=0)
+    sf_score = models.IntegerField(verbose_name=u'sf_score', default=0)
+    sg_score = models.IntegerField(verbose_name=u'sg_score', default=0)
+    pg_score = models.IntegerField(verbose_name=u'pg_score', default=0)
     total_point = models.FloatField(verbose_name=u'Sum', default=0)
 
     class Meta:
