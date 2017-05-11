@@ -14,7 +14,8 @@ class UserProfile(AbstractUser):
     gender = models.IntegerField(choices=((0, u'male'), (1, u'female')), default=0)
     address = models.CharField(max_length=100, default=u'')
     money = models.IntegerField(verbose_name=u'UserMoney', default=200)
-    image = models.ImageField(upload_to=upload_dir, default=default_pic)
+    # image = models.ImageField(upload_to=upload_dir, default=default_pic)
+    image = models.CharField(max_length=150, verbose_name=u'image', default=default_pic)
 
     class Meta:
         verbose_name = 'User Profile'
@@ -28,8 +29,9 @@ class UserProfile(AbstractUser):
 class History(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name=u'user')
     add_time = models.CharField(max_length=20, verbose_name=u'add_time', default=datetime.now().strftime('%Y-%m-%d'))
-    is_win = models.CharField(max_length=5, choices=((u'win', u'win'), (u'lose', u'lose')), default=u'win')
+    is_win = models.CharField(max_length=10, verbose_name=u'result', default=u'pending')
     award = models.IntegerField(verbose_name='award', default=0)
+    picture = models.IntegerField(verbose_name=u'GamePicture', default=1)
 
     c_name = models.CharField(max_length=10, verbose_name=u'Center_Name', default=u'')
     pf_name = models.CharField(max_length=10, verbose_name=u'PF_Name', default=u'')

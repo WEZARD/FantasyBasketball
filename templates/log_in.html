@@ -23,6 +23,9 @@
                 return (false);
             }
         }
+        {% if data.code == 1 %}
+            alert("Invalid username and password! Please try again!")
+        {% endif %}
     </script>
 
 </head>

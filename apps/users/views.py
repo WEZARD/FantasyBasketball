@@ -7,11 +7,14 @@ from datetime import datetime
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
+from django.db.models import Q
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.backends import ModelBackend
 
 from .models import UserProfile
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 from .models import History, UserProfile
+from game.views import getGameData, getUserData
 
 # class CustomBackend(ModelBackend):
 #     def authenticate(self, request, username=None, password=None, **kwargs):
@@ -24,15 +27,13 @@ from .models import History, UserProfile
 
 
 # Create your views here.
-currentUser = None
 
 
 # 用户登录页面
 class LoginView(View):
-    global currentUser
 
     def get(self, request):
-        return render(request, 'log_in.html', {'msg': None})
+        return render(request, 'log_in.html')
 
     def post(self, request):
         login_form = LoginForm(request.POST)
@@ -41,32 +42,101 @@ class LoginView(View):
             password = request.POST.get('password', '')
             currentUser = authenticate(username=username, password=password)  # 返回成功为对象，失败为空
             if currentUser is not None:
+                login_code = 0
                 login(request, currentUser)
-                data = {'userData': currentUser}
+
+                # session for save data
+                request.session['username'] = currentUser.username
+                request.session['money'] = currentUser.money
+                request.session['email'] = currentUser.email
+                request.session['gender'] = currentUser.gender
+                request.session['image'] = currentUser.image
+                request.session['address'] = currentUser.address
+
+                gameData = getGameData()
+                data = {'userData': currentUser, 'gameData': gameData, 'code': login_code}
                 return render(request, 'index.html', {'data': data})
+
+        login_code = 1  # 提示用户登录失败
+        data = {'code': login_code}
+        return render(request, 'log_in.html', {'data': data})
+
+
+# 用户注册页面
+class RegisterView(View):
+    def get(self, request):
+        register_form = RegisterForm()
+        return render(request, 'register.html', {'register_form': register_form})
+
+    def post(self, request):
+        register_form = RegisterForm(request.POST)
+        if register_form.is_valid():
+            username = request.POST.get('email', '')
+            password = request.POST.get('password', '')
+
+            new_user = UserProfile()
+            new_user.username = username
+            new_user.email = username
+            new_user.password = make_password(password)
+            new_user.save()
+            return render(request, 'register.html', {'register_form': register_form})
         else:
-            return render(request, 'log_in.html', {'msg': 'Invalid username or password!'})
+            register_code = -1
+            data = {'code': register_code}
+            return render(request, 'register.html', {'data': data})
+
+        # return render(request, 'register.html', {'register_form': register_form})
 
 
 # 用户注册页面
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'POST':
+        register_name = request.POST.get('email')
+        print register_name
+        already_name = UserProfile.objects.filter(Q(username=register_name) | Q(email=register_name))
+        print already_name
+        if already_name is not None:  # 数据库已存在
+            register_code = 1
+            data = {'code': register_code}
+            return render(request, 'register.html', {'data': data})
+        else:
+            password = request.POST.get('password')
+            print register_name
+            print password
+            newUser = UserProfile()
+            newUser.email = register_name
+            newUser.password = password
+            # newUser.save()
+            currentUser = newUser
+
+            gameData = getGameData()
+            register_code = 0
+            data = {'userData': currentUser, 'gameData': gameData, 'code': register_code}
+            return render(request, 'index.html', {'data': data})
+
+    register_code = 0
+    data = {'code': register_code}
+    return render(request, 'register.html', {'data':data})
 
 
 # 用户中心信息页面
-def usercenter_info(request):
-    data = getData()
-    return render(request, 'usercenter-info.html', {'data': data})
+class UserInfoView(View):
+    def get(self, request):
+        # gameData = getGameData()
+        userData = getUserData(request)
+        data = {'userData': userData}
+
+        return render(request, 'usercenter-info.html', {'data': data})
 
 
 # 用户中心游戏历史页面
-def usercenter_history(request):
-    user = UserProfile.objects.get(username='admin')
-    historyData = getHistory(user)
-    userData = getUserData()
-    data = {'userData': userData, 'historyData': historyData}
+class UserHistoryView(View):
+    def post(self, request):
+        userData = getUserData(request)
+        user = UserProfile.objects.get(username=userData['username'])
+        historyData = getHistory(user)
+        data = {'userData': userData, 'historyData': historyData}
 
-    if request.method == 'POST':
         c = request.POST.get('c_data')
         pf = request.POST.get('pf_data')
         sf = request.POST.get('sf_data')
@@ -78,8 +148,6 @@ def usercenter_history(request):
             return render(request, 'usercenter-history.html', {'data': data})
 
         add_time = datetime.now().strftime('%Y-%m-%d')
-        user = UserProfile.objects.get(username='admin')
-
         record = History()
         record.add_time = add_time
         record.c_name = c
@@ -89,14 +157,22 @@ def usercenter_history(request):
         record.pg_name = pg
         record.user = user
         record.save()
+        return render(request, 'usercenter-history.html', {'data': data})
 
-    return render(request, 'usercenter-history.html', {'data': data})
-
+    def get(self, request):
+        userData = getUserData(request)
+        user = UserProfile.objects.get(username=userData['username'])
+        historyData = getHistory(user)
+        data = {'userData': userData, 'historyData': historyData}
+        return render(request, 'usercenter-history.html', {'data': data})
 
 # 用户中心游戏规则页面
-def usercenter_rules(request):
-    data = getData()
-    return render(request, 'usercenter-rules.html', {'data': data})
+class UserRulesView(View):
+    def get(self, request):
+        userData = getUserData(request)
+        data = {'userData': userData}
+
+        return render(request, 'usercenter-rules.html', {'data': data})
 
 
 # 从数据库获取数据，处理后返回给前台显示
@@ -126,21 +202,6 @@ def getData():
 
     data = {'userData': userData, 'gameData': gameData}
     return data
-
-
-# 获取用户数据
-def getUserData():
-    userName = 'userName1'
-    userPassword = 'password1'
-    userSex = 0
-    userAddress = 'User1 Address'
-    userEmail = 'user1@user1.com'
-    userMoney = 'userMoney1'
-    userPicture = 'userhead.JPG'
-    userData = {'userName': userName, 'userPassword': userPassword, 'userSex': userSex, 'userAddress': userAddress,
-                'userEmail': userEmail, 'userMoney': userMoney, 'userPicture': userPicture}
-
-    return userData
 
 
 # 获取历史记录数据

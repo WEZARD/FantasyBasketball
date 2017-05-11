@@ -12,6 +12,11 @@
 
     <script src="/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        {% if data.code == 0 %}
+            alert("Welcome, {{ data.userData.username }}!")
+        {% endif %}
+    </script>
 
 </head>
 <body>
@@ -49,7 +54,17 @@
             <div class="middle">
                 <div class="wp">
                     <a href="{% url 'home' %}"><img class="fl" src="/static/images/b_logo.png" align="center"/></a>
+{#                    <img class="fl" src="/static/images/b_logo.png" align="center" onclick="sendUserData1()"/>#}
                     <h1>Welcome to Fantasy Basketball Manager</h1>
+{#                    <form method="post", action="{% url 'home' %}", name="userdataform1">#}
+{#                        <input type="hidden" name="userdata1" value="{{ data.userData }}">#}
+{#                        {% csrf_token %}#}
+{#                    </form>#}
+{#                    <script type="text/javascript">#}
+{#                        function sendUserData1(){#}
+{#                            document.userdataform1.submit();#}
+{#                        }#}
+{#                    </script>#}
                 </div>
             </div>
 

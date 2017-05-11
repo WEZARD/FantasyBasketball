@@ -26,17 +26,17 @@
                     <div class="fl"><p>Fantasy Basketball Manager</p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            <dd>{{ data.userData.username }}<img class="down fr" src="/static/images/top_down.png"/>
                             </dd>
-                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
+                            <dt><img width="20" height="20" src="/{{ data.userData.image }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
+                                <dt><img width="80" height="80" src="/{{ data.userData.image }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>{{ data.userData.userName }}</h2>
-                                    <p>{{ data.userData.userMoney }}</p>
+                                    <h2>{{ data.userData.username }}</h2>
+                                    <p>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -94,7 +94,7 @@
                             <label class="changearea" for="avatarUp">
                             <span id="avatardiv" class="pic">
                                 <img width="100" height="100" class="js-img-show" id="avatarShow"
-                                     src="/static/images/{{ data.userData.userPicture }}"/>
+                                     src="/{{ data.userData.image }}"/>
                             </span>
                                 <span class="fl upload-inp-box" style="margin-left:70px;">
                                 <span class="button btn-green btn-w100" id="jsAvatarBtn">change</span>
@@ -111,7 +111,7 @@
                     <form class="perinform" id="jsEditUserForm" autocomplete="off">
                         <ul class="right">
                             <li>User&nbsp;Name:
-                                <input type="text" name="nick_name" id="nick_name" value="{{ data.userData.userName }}"
+                                <input type="text" name="nick_name" id="nick_name" value="{{ data.userData.username }}"
                                        maxlength="10"
                                        placeholder="Please input your username">
                                 <i class="error-tips"></i>
@@ -123,25 +123,25 @@
                             <li>Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input type="radio" name="gender" value="male"
-                                            {% if data.userData.userSex == 0 %}
+                                            {% if data.userData.gender == 0 %}
                                            checked="checked"
                                             {% endif %}>Male
                                 </label>
                                 <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input type="radio" name="gender" value="female"
-                                            {% if data.userData.userSex == 1 %}
+                                            {% if data.userData.gender == 1 %}
                                            checked="checked"
                                             {% endif %}>Female
                                 </label>
                             </li>
                             <li class="p_infor_city">Address:&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input type="text" name="address" id="address" placeholder="Please input your address"
-                                       value="{{ data.userData.userAddress }}" maxlength="10">
+                                       value="{{ data.userData.address }}" maxlength="10">
                                 <i class="error-tips"></i>
                             </li>
                             <li>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input class="borderno" type="text" name="email" readonly="readonly"
-                                       value="{{ data.userData.userEmail }}"/>
+                                       value="{{ data.userData.email }}"/>
                                 <span class="green changeemai_btn">[Change]</span>
                             </li>
                             <li class="button heibtn">

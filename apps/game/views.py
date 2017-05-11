@@ -3,7 +3,11 @@ from __future__ import unicode_literals
 
 import random
 from datetime import datetime
+
+from django.views import View
+
 from .models import Game, Player, Point
+# from users.views import currentUser
 
 from django.shortcuts import render
 from django.db.models import Q
@@ -13,16 +17,35 @@ from django.db.models import Q
 
 
 # 大厅页面
-def index(request):
-    userData = getUserData()
-    gameData = getGameData()
+class HomeView(View):
+    def get(self, request):
+        userData = getUserData(request)
+        gameData = getGameData()
 
-    data = {'userData': userData, 'gameData': gameData}
+        data = {'userData': userData, 'gameData': gameData}
+        return render(request, 'index.html', {'data': data})
 
-    return render(request, 'index.html', {'data': data})
+        # def post(self, request):
+        #     userData = request.POST.get('userdata1')
+        #     gameData = getGameData()
+        #     data = {'userData': userData, 'gameData': gameData}
+        #     return render(request, 'index.html', {'data': data})
 
 
 # 选择球队页面
+class TeamView(View):
+    def post(self, request):
+        team1 = request.POST.get('team1')
+        team2 = request.POST.get('team2')
+        playerData = getPlayerData(team1, team2)
+        userData = getUserData()
+        data = {'userData': userData, 'playerData': playerData}
+        return render(request, 'select_team.html', {'data': data})
+
+    def get(self, request):
+        return render(request, 'select_team.html')
+
+
 def select_team(request):
     if request.method == 'POST':
         team1 = request.POST.get('team1')
@@ -35,16 +58,17 @@ def select_team(request):
 
 
 # 获取用户数据
-def getUserData():
-    userName = 'userName1'
-    userPassword = 'password1'
-    userSex = 0
-    userAddress = 'User1 Address'
-    userEmail = 'user1@user1.com'
-    userMoney = 'userMoney1'
-    userPicture = 'userhead.JPG'
-    userData = {'userName': userName, 'userPassword': userPassword, 'userSex': userSex, 'userAddress': userAddress,
-                'userEmail': userEmail, 'userMoney': userMoney, 'userPicture': userPicture}
+def getUserData(request):
+    username = request.session.get('username')
+    gender = request.session.get('gender')
+    print 'gender: ' + str(gender)
+    address = request.session.get('address')
+    print address is None
+    email = request.session.get('email')
+    money = request.session.get('money')
+    image = request.session.get('image')
+    userData = {'username': username, 'gender': gender, 'address': address,
+                'email': email, 'money': money, 'image': image}
 
     return userData
 
@@ -54,8 +78,8 @@ def getGameData():
     gameData = None
     present_date = datetime.now().strftime('%Y-%m-%d')
     present_hour = datetime.now().strftime('%H:%M')
-    # all_games = Game.objects.filter(date=present_date)
-    all_games = Game.objects.all()
+    all_games = Game.objects.filter(date=present_date)
+    # all_games = Game.objects.all()
     if all_games:
         # for game in all_games:
         #     if present_hour > game.hour:

@@ -27,17 +27,17 @@
                     <div class="fl"><p>Fantasy Basketball Manager</p></div>
                     <div class="personal">
                         <dl class="user fr">
-                            <dd>{{ data.userData.userName }}<img class="down fr" src="/static/images/top_down.png"/>
+                            <dd>{{ data.userData.username }}<img class="down fr" src="/static/images/top_down.png"/>
                             </dd>
-                            <dt><img width="20" height="20" src="/static/images/{{ data.userData.userPicture }}"/></dt>
+                            <dt><img width="20" height="20" src="/{{ data.userData.image }}"/></dt>
                         </dl>
                         <div class="userdetail">
                             <dl>
-                                <dt><img width="80" height="80" src="/static/images/{{ data.userData.userPicture }}"/>
+                                <dt><img width="80" height="80" src="/{{ data.userData.image }}"/>
                                 </dt>
                                 <dd>
-                                    <h2>{{ data.userData.userName }}</h2>
-                                    <p>{{ data.userData.userMoney }}</p>
+                                    <h2>{{ data.userData.username }}</h2>
+                                    <p>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -100,39 +100,47 @@
 
                     <div class="messages">
                         <div class="fr">
-                            <div class="top"><span class="fl time">选择竞技场</span><span class="fr btn foldbtn"></span>
+                            <div class="top"><span class="fl time">Choose Battle Field</span><span
+                                    class="fr btn foldbtn"></span>
                             </div>
                             <p>
-                                每天系统会在大厅开放一定数量的常规模式竞技场，每个竞技场都会有不同的奖励，包括金豆、钻石以及附赠奖品等。
-                                JRs可以根据每个竞技场需要消费的金豆数和钻石数或者对奖品的喜好来选择竞技场参与活动。
+                                Everyday the system will open some normal battle fileds, each battle field get its own
+                                rewards, which includes diamonds or virtual coins,etc. Users can choose the battle field
+                                depending on what rewards he wants.
                             </p>
-                            <div class="top"><span class="fl time">球员工资</span><span class="fr btn foldbtn"></span></div>
+                            <div class="top"><span class="fl time">Player Worth</span><span
+                                    class="fr btn foldbtn"></span></div>
                             <p>
-                                根据每位现役NBA球员的赛季数据和最近数据综合，系统得出了每位NBA球员的虚拟工资。你挑选的5名球员的工资总和不能超过“工资帽”上限。
+                                Depends on each NBA player's stas of the season and stats of recent games, the system
+                                will calculate each player's worth. The total worth of players you choose can't exceed
+                                the limit.
                             </p>
-                            <div class="top"><span class="fl time">组建梦之队</span><span class="fr btn foldbtn"></span>
+                            <div class="top"><span class="fl time">Build Your Own tTam</span><span
+                                    class="fr btn foldbtn"></span>
                             </div>
                             <p>
-                                你可以从所有当天参与NBA比赛的球员当中挑选5名组成你的“梦之队”，5名球员必须是五个位置(控球后卫、得分后卫、小前锋、大前锋和中锋）各一人。
-                                每个球员都有自己的场上位置，如克里斯-保罗是控球后卫，而有些球员可以打两个不同位置，比如保罗-加索尔是大前锋/中锋，这样就在阵容上提供了更多的选择。<br><br>
-                                当你挑选完5名球员以后，可进行提交阵容的操作，系统会记录提交的阵容和提交时间。<br><br>
-                                提交阵容的时间必须在本竞技场标注的截止时间之前。<br><br>
-                                你可以使用同一套阵容参与多个竞技场的游戏，也可以不同竞技场使用不一样的阵容。
+                                you can build your own 'dream-team' from all players who have game to play that day. The
+                                five players you choose have to fill 5 position as one point guard, one score guard, one
+                                small foward, one power foward and one center. Each NBA player has his own postion, for
+                                example, Chris Paul, he is a point guard. For some of the players, they got 2 positions
+                                to be chosen, such as Paul Gasol, he can play as a power forward or a center.<br><br>
+                                You can submit your team after you have chosen 5 players for you.<br><br>
+                                The submit time must be before the deadline of the battle field you chose to fight in.
                             </p>
-                            <div class="top"><span class="fl time">修改阵容</span><span class="fr btn foldbtn"></span></div>
+                            <div class="top"><span class="fl time">Change Your Team</span><span class="fr btn foldbtn"></span></div>
                             <p>
-                                只要在竞技场截止时间之前提交了阵容，你都可以在NBA官方比赛开始时间前修改你的阵容。
+                                You can change the players in your team before the deadline of the battle field.
                             </p>
-                            <div class="top"><span class="fl time">排名规则</span><span class="fr btn foldbtn"></span></div>
+                            <div class="top"><span class="fl time">Ranking Rules</span><span class="fr btn foldbtn"></span></div>
                             <p>
-                                根据球员在当天NBA比赛中的实际表现（数据统计），经统一固定的数据评分公式得出每个球员的游戏评分。<br><br>
-                                5名球员游戏评分之和相加即为玩家该场比赛的排名，若积分相同时，购买阵容花费工资更低的用户排名更高，若资金再相同则魅力值越高的用户排名越高，
-                                若魅力值再相同则最后一次更改阵容越早的用户排名越高。
+                                Depending on each NBA player's actual performance(stats), the system will calculate each player's fantasy score by the unique formula.<br><br>
+                                The total score of your team will be the sum of the five player's own fantasy score. After all the games of each day end, the system will get the ranking of all the users in the each battle field base on the total score.<br><br>
+                                If two users share the same total score, the team which has the less worth of players will win. If they still share the same worth of players, the one who submit his team earlier will win.
                             </p>
-                            <div class="top"><span class="fl time">特殊情况说明</span><span class="fr btn foldbtn"></span>
+                            <div class="top"><span class="fl time">Special Occasion</span><span class="fr btn foldbtn"></span>
                             </div>
                             <p>
-                                无论何种原因，如果某名球员当天没有出场，则其当日积分为0。如遇到比赛取消的情况，请及时修改阵容，更换为其他未开始比赛的球员。
+                                For any reason, if the player you chose did not show on the games, the fantasy score of this player will be zero.
                             </p>
                         </div>
                     </div>
