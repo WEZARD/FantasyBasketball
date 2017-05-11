@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.sites',
     'game',
-    'users',
-    'captcha'
+    'users'
+    # 'captcha'
 ]
 AUTH_USER_MODEL = 'users.UserProfile'
 
