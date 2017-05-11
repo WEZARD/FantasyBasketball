@@ -61,9 +61,7 @@ def select_team(request):
 def getUserData(request):
     username = request.session.get('username')
     gender = request.session.get('gender')
-    print 'gender: ' + str(gender)
     address = request.session.get('address')
-    print address is None
     email = request.session.get('email')
     money = request.session.get('money')
     image = request.session.get('image')
