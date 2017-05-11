@@ -28,6 +28,9 @@ from game.views import getGameData, getUserData
 
 # Create your views here.
 
+def log_in(request):
+    return render(request, 'log_in.html')
+
 
 # 用户登录页面
 class LoginView(View):
