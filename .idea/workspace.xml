@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/users/views.py" afterPath="$PROJECT_DIR$/apps/users/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,13 +36,13 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apps/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1740">
-              <caret line="155" column="22" lean-forward="false" selection-start-line="155" selection-start-column="22" selection-end-line="155" selection-end-column="22" />
+            <state relative-caret-position="1755">
+              <caret line="156" column="34" lean-forward="false" selection-start-line="156" selection-start-column="34" selection-end-line="156" selection-end-column="34" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
-                <element signature="e#587#623#0" expanded="false" />
-                <element signature="e#1044#1973#0" expanded="false" />
-                <element signature="e#3797#4008#0" expanded="false" />
+                <element signature="e#585#621#0" expanded="false" />
+                <element signature="e#1042#1971#0" expanded="false" />
+                <element signature="e#3781#3992#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -979,13 +978,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="155" column="22" lean-forward="false" selection-start-line="155" selection-start-column="22" selection-end-line="155" selection-end-column="22" />
+        <state relative-caret-position="1755">
+          <caret line="156" column="34" lean-forward="false" selection-start-line="156" selection-start-column="34" selection-end-line="156" selection-end-column="34" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
-            <element signature="e#587#623#0" expanded="false" />
-            <element signature="e#1044#1973#0" expanded="false" />
-            <element signature="e#3797#4008#0" expanded="false" />
+            <element signature="e#585#621#0" expanded="false" />
+            <element signature="e#1042#1971#0" expanded="false" />
+            <element signature="e#3781#3992#0" expanded="false" />
           </folding>
         </state>
       </provider>
