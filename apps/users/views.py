@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import random
 from datetime import datetime
+import requests
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -12,7 +12,6 @@ from django.db.models import Q
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.backends import ModelBackend
 
-from .models import UserProfile
 from .forms import LoginForm, RegisterForm
 from .models import History, UserProfile
 from game.models import Player
@@ -79,8 +78,17 @@ class RegisterView(View):
             new_user.email = username
             new_user.password = make_password(password)
             new_user.save()
+            rankUser()
             # session for saving data
             setSession(request, new_user)
+            # upload to ES
+            upload_data = {'id': new_user.id, 'username': new_user.username, 'password': new_user.password,
+                           'email': new_user.email, 'gender': new_user.gender, 'address': new_user.address,
+                           'image': new_user.image, 'money': new_user.money, 'totalpoints': new_user.total_points,
+                           'rank': new_user.rank}
+            print requests.post(
+                'http://search-fantasybasketball-cf2w76ymdcubcuigezgqpmvhya.us-west-1.es.amazonaws.com/user/profile',
+                json=upload_data)
 
             login_code = 0
             gameData = getGameData()
@@ -92,37 +100,6 @@ class RegisterView(View):
             return render(request, 'register.html', {'data': data})
 
             # return render(request, 'register.html', {'register_form': register_form})
-
-
-# 用户注册页面
-def register(request):
-    if request.method == 'POST':
-        register_name = request.POST.get('email')
-        print register_name
-        already_name = UserProfile.objects.filter(Q(username=register_name) | Q(email=register_name))
-        print already_name
-        if already_name is not None:  # 数据库已存在
-            register_code = 1
-            data = {'code': register_code}
-            return render(request, 'register.html', {'data': data})
-        else:
-            password = request.POST.get('password')
-            print register_name
-            print password
-            newUser = UserProfile()
-            newUser.email = register_name
-            newUser.password = password
-            # newUser.save()
-            currentUser = newUser
-
-            gameData = getGameData()
-            register_code = 0
-            data = {'userData': currentUser, 'gameData': gameData, 'code': register_code}
-            return render(request, 'index.html', {'data': data})
-
-    register_code = 0
-    data = {'code': register_code}
-    return render(request, 'register.html', {'data': data})
 
 
 # 用户中心信息页面
@@ -140,8 +117,6 @@ class UserHistoryView(View):
     def post(self, request):
         userData = getUserData(request)
         user = UserProfile.objects.get(username=userData['username'])
-        historyData = getHistory(user)
-        data = {'userData': userData, 'historyData': historyData}
 
         c = request.POST.get('c_data')
         pf = request.POST.get('pf_data')
@@ -149,10 +124,7 @@ class UserHistoryView(View):
         sg = request.POST.get('sg_data')
         pg = request.POST.get('pg_data')
 
-        if (c is None or c == '') or (pf is None or pf == '') or (sf is None or sf == '') or (
-                        sg is None or sg == '') or (pg is None or pg == ''):
-            return render(request, 'usercenter-history.html', {'data': data})
-
+        totalUserNum = rankUser()
         add_time = datetime.now().strftime('%Y-%m-%d')
 
         c_score = Player.objects.get(name=c).fantasy_score
@@ -161,19 +133,48 @@ class UserHistoryView(View):
         sg_score = Player.objects.get(name=sg).fantasy_score
         pg_score = Player.objects.get(name=pg).fantasy_score
 
+        c_value = Player.objects.get(name=c).value
+        pf_value = Player.objects.get(name=pf).value
+        sf_value = Player.objects.get(name=sf).value
+        sg_value = Player.objects.get(name=sg).value
+        pg_value = Player.objects.get(name=pg).value
+        totalValue = c_value + pf_value + sf_value + sg_value + pg_value
+        # 余额不足
+        if user.money < totalValue:
+            userData = getUserData(request)
+            data = {'userData': userData, 'error': 1}
+            return render(request, 'usercenter-info.html', {'data': data})
+
+        user.money -= totalValue
+        user.save()
+        setSession(request, user)
+
         record = History(add_time=add_time, c_name=c, pf_name=pf, sf_name=sf, sg_name=sg, pg_name=pg, user=user,
                          c_score=c_score, pf_score=pf_score, sf_score=sf_score, sg_score=sg_score, pg_score=pg_score)
         record.save()
 
+        # upload to ES
+        upload_data = {'id': record.id, 'addtime': record.add_time, 'iswin': record.is_win, 'award': record.award,
+                       'userid': record.user_id, 'totalpoints': record.total_point, 'c_name': record.c_name,
+                       'pf_name': record.pf_name, 'sf_name': record.sf_name, 'sg_name': record.sg_name,
+                       'pg_name': record.pg_name, 'c_score': record.c_score, 'pf_score': record.pf_score,
+                       'sf_score': record.sf_score, 'sg_score': record.sg_score, 'pg_score': record.pg_score,
+                       'picture': record.picture, 'isgameover': record.IsGameOver}
+        print requests.post(
+            'http://search-fantasybasketball-cf2w76ymdcubcuigezgqpmvhya.us-west-1.es.amazonaws.com/user/history',
+            json=upload_data)
+
+        userData = getUserData(request)
         historyData = getHistory(user)
-        data = {'userData': userData, 'historyData': historyData}
+        data = {'userData': userData, 'historyData': historyData, 'total': totalUserNum}
         return render(request, 'usercenter-history.html', {'data': data})
 
     def get(self, request):
         userData = getUserData(request)
         user = UserProfile.objects.get(username=userData['username'])
         historyData = getHistory(user)
-        data = {'userData': userData, 'historyData': historyData}
+        totalUserNum = rankUser()
+        data = {'userData': userData, 'historyData': historyData, 'total': totalUserNum}
         return render(request, 'usercenter-history.html', {'data': data})
 
 
@@ -201,9 +202,11 @@ def setSession(request, user):
     request.session['gender'] = user.gender
     request.session['image'] = user.image
     request.session['address'] = user.address
+    request.session['rank'] = user.rank
+    request.session['totalPoint'] = user.total_points
 
 
-# 更新数据
+# 实时更新数据
 def updateScore(request):
     recordID = request.GET.get('recordID', None)
     if recordID is not None:
@@ -213,6 +216,20 @@ def updateScore(request):
         sf_score = record.sf_score
         sg_score = record.sg_score
         pg_score = record.pg_score
+
         data = {'c_score': c_score, 'pf_score': pf_score, 'sf_score': sf_score, 'sg_score': sg_score,
                 'pg_score': pg_score}
         return JsonResponse(data)
+
+
+def rankUser():
+    totalUser = UserProfile.objects.order_by('total_points')
+    totalUserNum = totalUser.count()
+    if totalUser:
+        rank = 1
+        for eachUser in totalUser:
+            eachUser.rank = rank
+            eachUser.save()
+            rank += 1
+
+    return totalUserNum

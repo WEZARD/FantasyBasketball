@@ -33,7 +33,7 @@
                                 </dt>
                                 <dd>
                                     <h2>{{ data.userData.username }}</h2>
-                                    <p>{{ data.userData.money }}</p>
+                                    <p><b>Money:&nbsp;&nbsp;&nbsp;</b>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -94,7 +94,7 @@
                 <div class="fr">
                     <select id="my_select_style" name="select_c">
                         {% for c in data.playerData.c_players %}
-                            <option value="{{ c.name }}">{{ c.name }}</option>
+                            <option value="{{ c.name }}">{{ c.name }}&nbsp;&nbsp;(value: {{ c.value }})</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -113,7 +113,7 @@
                         <div class="fr">
                             <select id="my_select_style" name="select_pf">
                                 {% for pf in data.playerData.pf_players %}
-                                    <option value="{{ pf.name }}">{{ pf.name }}</option>
+                                    <option value="{{ pf.name }}">{{ pf.name }}&nbsp;&nbsp;(value: {{ pf.value }})</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -134,7 +134,7 @@
                         <div class="fr">
                             <select id="my_select_style" name="select_sf">
                                 {% for sf in data.playerData.sf_players %}
-                                    <option value="{{ sf.name }}">{{ sf.name }}</option>
+                                    <option value="{{ sf.name }}">{{ sf.name }}&nbsp;&nbsp;(value: {{ sf.value }})</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -155,7 +155,7 @@
                         <div class="fr">
                             <select id="my_select_style" name="select_sg">
                                 {% for sg in data.playerData.sg_players %}
-                                    <option value="{{ sg.name }}">{{ sg.name }}</option>
+                                    <option value="{{ sg.name }}">{{ sg.name }}&nbsp;&nbsp;(value: {{ sg.value }})</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -176,7 +176,7 @@
                         <div class="fr">
                             <select id="my_select_style" name="select_pg">
                                 {% for pg in data.playerData.pg_players %}
-                                    <option value="{{ pg.name }}">{{ pg.name }}</option>
+                                    <option value="{{ pg.name }}">{{ pg.name }}&nbsp;&nbsp;(value: {{ pg.value }})</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -195,15 +195,10 @@
 
 <!-- hidden form to submit -->
 <form id="hidden_form" action="{% url 'user_history' %}" method="post" name="data_form">
-    <label>c_data</label>
     <input type="hidden" name="c_data" value=3>
-    <label>pf_data</label>
     <input type="hidden" name="pf_data" value=3>
-    <label>sf_data</label>
     <input type="hidden" name="sf_data" value=3>
-    <label>sg_data</label>
     <input type="hidden" name="sg_data" value=3>
-    <label>pg_data</label>
     <input type="hidden" name="pg_data" value=3>
     {% csrf_token %}
 </form>

@@ -13,6 +13,8 @@ class Game(models.Model):
     teamname2 = models.CharField(max_length=20, verbose_name=u'TeamName2', default=u'')
     date = models.CharField(max_length=20, verbose_name=u'Date', default=datetime.now().strftime('%Y-%m-%d'))
     hour = models.CharField(max_length=20, verbose_name=u'Hour', default=datetime.now().strftime('%H:%M'))
+    game_required = models.IntegerField(verbose_name=u'GameRequired', default=50)
+    game_award = models.IntegerField(verbose_name=u'GameAward', default=90)
     picture = models.IntegerField(verbose_name=u'GamePicture', default=1)
 
     class Meta:

@@ -54,8 +54,11 @@ def getUserData(request):
     email = request.session.get('email')
     money = request.session.get('money')
     image = request.session.get('image')
+    rank = request.session.get('rank')
+    toralPoint = request.session.get('totalPoint')
+
     userData = {'username': username, 'gender': gender, 'address': address,
-                'email': email, 'money': money, 'image': image}
+                'email': email, 'money': money, 'image': image, 'rank': rank, 'totalPoint': toralPoint}
 
     return userData
 

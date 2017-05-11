@@ -38,7 +38,7 @@
                                 </dt>
                                 <dd>
                                     <h2>{{ data.userData.username }}</h2>
-                                    <p>{{ data.userData.money }}</p>
+                                    <p><b>Money:&nbsp;&nbsp;&nbsp;</b>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -104,11 +104,13 @@
                                 <ul class="fl tab_header">
                                     <li>{{ record.add_time }}</li>
                                 </ul>
-                                <div class="fr butler-num"><span class="key">{{ record.is_win }}&nbsp;&nbsp;<span><img
-                                        width="12"
-                                        height="12"
-                                        class="scrollLoading"
-                                        src="/static/images/ruchangfei.png">{{ record.total_point }}</span></span>&nbsp;&nbsp;&nbsp;
+                                <div class="fr butler-num"><span class="key">{{ record.is_win }}&nbsp;&nbsp;
+                                    {% if record.IsGameOver == 'True' %}<span><img
+                                            width="12"
+                                            height="12"
+                                            class="scrollLoading"
+                                            src="/static/images/ruchangfei.png">{{ record.total_point }}</span></span>
+                                        &nbsp;&nbsp;&nbsp;{% endif %}
                                 </div>
                             </div>
 
@@ -143,12 +145,17 @@
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </b><span>{{ record.sg_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                                id="sgScore{{ record.id }}">{{ record.sg_score }}</span></span</li>
+                                                id="sgScore{{ record.id }}">{{ record.sg_score }}</span></span></li>
                                         <li><b>Point Guard:&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                         </b><span>{{ record.pg_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
                                                 id="pgScore{{ record.id }}">{{ record.pg_score }}</span></span></li>
+                                        <li><b>Your Rank:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span id="rank{{ record.id }}">{{ data.userData.rank }}/{{ data.total }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -158,7 +165,10 @@
                                 _update = {
                                     url: '{% url 'updateScore' %}',
                                     type: 'GET',
-                                    data: {recordID: {{ record.id }}, csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()},
+                                    data: {
+                                        recordID: {{ record.id }},
+                                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                                    },
 
                                     success: function (score) {
                                         $('#cScore{{ record.id }}').text(score.c_score);

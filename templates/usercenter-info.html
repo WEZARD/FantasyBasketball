@@ -15,6 +15,11 @@
 
     <script src="/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="/static/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    {% if data.error == 1 %}
+        <script type="text/javascript">
+            alert('No Enough Money!');
+        </script>
+    {% endif %}
 
 </head>
 <body>
@@ -36,7 +41,7 @@
                                 </dt>
                                 <dd>
                                     <h2>{{ data.userData.username }}</h2>
-                                    <p>{{ data.userData.money }}</p>
+                                    <p><b>Money:&nbsp;&nbsp;&nbsp;</b>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
