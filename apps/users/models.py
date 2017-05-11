@@ -29,7 +29,7 @@ class UserProfile(AbstractUser):
 class History(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name=u'user')
     add_time = models.CharField(max_length=20, verbose_name=u'add_time', default=datetime.now().strftime('%Y-%m-%d'))
-    is_win = models.CharField(max_length=10, verbose_name=u'result', default=u'pending')
+    is_win = models.CharField(max_length=10, verbose_name=u'result', default=u'submitted')
     award = models.IntegerField(verbose_name='award', default=0)
     picture = models.IntegerField(verbose_name=u'GamePicture', default=1)
 

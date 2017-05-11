@@ -48,13 +48,8 @@ class LoginView(View):
                 login_code = 0
                 login(request, currentUser)
 
-                # session for save data
-                request.session['username'] = currentUser.username
-                request.session['money'] = currentUser.money
-                request.session['email'] = currentUser.email
-                request.session['gender'] = currentUser.gender
-                request.session['image'] = currentUser.image
-                request.session['address'] = currentUser.address
+                # session for saving data
+                setSession(request, currentUser)
 
                 gameData = getGameData()
                 data = {'userData': currentUser, 'gameData': gameData, 'code': login_code}
@@ -82,7 +77,13 @@ class RegisterView(View):
             new_user.email = username
             new_user.password = make_password(password)
             new_user.save()
-            return render(request, 'register.html', {'register_form': register_form})
+            # session for saving data
+            setSession(request, new_user)
+
+            login_code = 0
+            gameData = getGameData()
+            data = {'userData': new_user, 'gameData': gameData, 'code': login_code}
+            return render(request, 'index.html', {'data': data})
         else:
             register_code = -1
             data = {'code': register_code}
@@ -178,37 +179,19 @@ class UserRulesView(View):
         return render(request, 'usercenter-rules.html', {'data': data})
 
 
-# 从数据库获取数据，处理后返回给前台显示
-def getData():
-    # 用户数据，用于显示于右上角的框框
-    userName = 'userName1'
-    userPassword = 'password1'
-    userSex = 0
-    userAddress = 'User1 Address'
-    userEmail = 'user1@user1.com'
-    userMoney = 'userMoney1'
-    userPicture = 'userhead.JPG'
-    userData = {'userName': userName, 'userPassword': userPassword, 'userSex': userSex, 'userAddress': userAddress,
-                'userEmail': userEmail, 'userMoney': userMoney, 'userPicture': userPicture}
-
-    # 比赛数据，用于显示在主页的列表中
-    deadline = random.randint(0, 24)
-    gamePic = random.randint(0, 1)
-    gameAward = random.randint(50, 70)
-    gameRequired = random.randint(20, 30)
-    gameProb = random.randint(10, 90)
-    totalPeople = random.randint(1000, 3000)
-    gameData = {'deadline': deadline, 'gamePic': gamePic, 'gameAward': gameAward,
-                'gameRequired': gameRequired, 'gameProb': gameProb, 'totalPeople': totalPeople}
-
-    # 球员数据
-
-    data = {'userData': userData, 'gameData': gameData}
-    return data
-
-
 # 获取历史记录数据
 def getHistory(user):
     all_records = History.objects.filter(user=user)
 
     return all_records
+
+
+# 设置用户session
+def setSession(request, user):
+
+    request.session['username'] = user.username
+    request.session['money'] = user.money
+    request.session['email'] = user.email
+    request.session['gender'] = user.gender
+    request.session['image'] = user.image
+    request.session['address'] = user.address

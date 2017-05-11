@@ -46,17 +46,6 @@ class TeamView(View):
         return render(request, 'select_team.html')
 
 
-def select_team(request):
-    if request.method == 'POST':
-        team1 = request.POST.get('team1')
-        team2 = request.POST.get('team2')
-        playerData = getPlayerData(team1, team2)
-        userData = getUserData(request)
-
-    data = {'userData': userData, 'playerData': playerData}
-    return render(request, 'select_team.html', {'data': data})
-
-
 # 获取用户数据
 def getUserData(request):
     username = request.session.get('username')
