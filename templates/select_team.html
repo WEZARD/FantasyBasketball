@@ -176,7 +176,7 @@
                         <div class="fr">
                             <select id="my_select_style" name="select_pg">
                                 {% for pg in data.playerData.pg_players %}
-                                    <option value="{{ pg.name }}">{{ pg.name }}&nbsp;&nbsp;(value: {{ pg.value }})</option>
+                                    <option value="{{ pg.name }}">{{ pg.name }}&nbsp;&nbsp;(value: {{ .value }})</option>
                                 {% endfor %}
                             </select>
                         </div>

@@ -15,7 +15,8 @@ from django.contrib.auth.backends import ModelBackend
 from .forms import LoginForm, RegisterForm
 from .models import History, UserProfile
 from game.models import Player
-from game.views import getGameData, getUserData
+from game.views import getGameData, getUserData, getPlayerData
+from game.nba_data_api import getNewData
 
 
 # class CustomBackend(ModelBackend):
@@ -208,6 +209,7 @@ def setSession(request, user):
 
 # 实时更新数据
 def updateScore(request):
+    updateAllPlayerScore()
     recordID = request.GET.get('recordID', None)
     if recordID is not None:
         record = History.objects.get(id=recordID)
@@ -222,6 +224,7 @@ def updateScore(request):
         return JsonResponse(data)
 
 
+# 用户排名
 def rankUser():
     totalUser = UserProfile.objects.order_by('total_points')
     totalUserNum = totalUser.count()
@@ -233,3 +236,44 @@ def rankUser():
             rank += 1
 
     return totalUserNum
+
+
+# 实时更新球员数据写入数据库
+def updateAllPlayerScore():
+    allGames = getGameData()
+    if allGames:
+        for eachGame in allGames:
+            date = eachGame.date
+            allPlayers = getPlayerData(eachGame.teamname1, eachGame.teamname2)
+            for position in ['c_players', 'pf_players', 'sf_players', 'sg_players', 'pg_players']:
+                for each_player in allPlayers[position]:
+                    playerStatus = getNewData(date, each_player.playerid)  # 返回球员名字，fantasypoints, isGameOver
+                    # 更新数据库
+                    playername = playerStatus['name']
+                    fantasy_points = playerStatus['fantasy_score']
+                    player = Player.objects.get(name=playername)
+                    player.fantasy_score = fantasy_points
+                    print playername + ' point: ' + str(fantasy_points)
+                    player.save()
+            # for each_player in allPlayers['c_players']:
+            #     playerStatus = getNewData(date, each_player.playerid)  # 返回球员名字，fantasypoints, isGameOver
+            #     # 更新数据库
+            #     playername = playerStatus['name']
+            #     fantasy_points = playerStatus['fantasy_score']
+            #     player = Player.objects.get(name=playername)
+            #     player.fantasy_score = fantasy_points
+            #     print playername + ' point: ' + str(fantasy_points)
+            #     player.save()
+
+            # print allPlayers['c_players']
+            # if allPlayers:
+                # for eachPlayer in allPlayers:
+                    # print eachPlayer[0].name
+                    # playerStatus = getNewData(date, eachPlayer.playerid)  # 返回球员名字，fantasypoints, isGameOver
+                    # # 更新数据库
+                    # playername = playerStatus['name']
+                    # fantasy_points = playerStatus['fantasy_score']
+                    # # isGameOver = playerStatus['isGameOver']
+                    # player = Player.objects.get(name=playername)
+                    # player.fantasy_score = fantasy_points
+                    # player.save()
