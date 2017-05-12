@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import httplib
 import urllib
-import base64
 import json
-import requests
-import gevent
 
 __author__ = 'zx'
 __date__ = '11/05/2017 20:05'
