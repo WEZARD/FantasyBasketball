@@ -6,8 +6,8 @@ import json
 __author__ = 'zx'
 __date__ = '12/05/2017 15:30'
 
-sqs = boto3.resource('sqs')
-sns = boto3.client('sns')
+sqs = boto3.resource('sqs', region_name='us-west-1')
+sns = boto3.client('sns', region_name='us-east-1')
 queue = sqs.get_queue_by_name(QueueName='TwittTrends')
 arn = 'arn:aws:sns:us-east-1:993294956953:Twitt'
 
