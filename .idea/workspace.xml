@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/nba_data_api.py" afterPath="$PROJECT_DIR$/apps/game/nba_data_api.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/users/views.py" afterPath="$PROJECT_DIR$/apps/users/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/usercenter-history.html" afterPath="$PROJECT_DIR$/templates/usercenter-history.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +29,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="270" column="48" lean-forward="false" selection-start-line="270" selection-start-column="35" selection-end-line="270" selection-end-column="48" />
+            <state relative-caret-position="-55">
+              <caret line="216" column="20" lean-forward="false" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="20" />
               <folding>
                 <element signature="e#644#680#0" expanded="false" />
                 <element signature="e#1101#2030#0" expanded="false" />
@@ -36,6 +39,7 @@
                 <element signature="e#7345#7522#0" expanded="false" />
                 <element signature="e#7559#7630#0" expanded="false" />
                 <element signature="e#7682#8035#0" expanded="false" />
+                <element signature="e#8879#9204#0" expanded="false" />
                 <element signature="e#9231#9502#0" expanded="false" />
               </folding>
             </state>
@@ -45,8 +49,8 @@
       <file leaf-file-name="usercenter-history.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="223" column="69" lean-forward="false" selection-start-line="223" selection-start-column="69" selection-end-line="223" selection-end-column="69" />
+            <state relative-caret-position="566">
+              <caret line="223" column="73" lean-forward="false" selection-start-line="223" selection-start-column="73" selection-end-line="223" selection-end-column="73" />
               <folding>
                 <element signature="e#8003#8009#0#HTML" expanded="true" />
                 <element signature="e#8171#8177#0#HTML" expanded="true" />
@@ -68,22 +72,10 @@
       <file leaf-file-name="nba_data_api.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+            <state relative-caret-position="278">
+              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="68" />
               <folding>
                 <element signature="e#24#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="worker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/game/worker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-              <folding>
-                <element signature="e#25#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,8 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get</find>
-      <find>sess</find>
       <find>session</find>
       <find>usercenter-info</find>
       <find>注册</find>
@@ -132,6 +122,8 @@
       <find>queue</find>
       <find>updateAllPlayerScore</find>
       <find>getNewNbaData</find>
+      <find>gameOver</find>
+      <find>updateRecord</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,10 +160,10 @@
         <option value="$PROJECT_DIR$/templates/select_team.html" />
         <option value="$PROJECT_DIR$/apps/game/models.py" />
         <option value="$PROJECT_DIR$/FantasyBasketball/urls.py" />
-        <option value="$PROJECT_DIR$/apps/users/views.py" />
         <option value="$PROJECT_DIR$/apps/users/models.py" />
         <option value="$PROJECT_DIR$/apps/game/worker.py" />
         <option value="$PROJECT_DIR$/apps/game/nba_data_api.py" />
+        <option value="$PROJECT_DIR$/apps/users/views.py" />
         <option value="$PROJECT_DIR$/templates/usercenter-history.html" />
       </list>
     </option>
@@ -983,15 +975,25 @@
         <state relative-caret-position="135">
           <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
           <folding>
-            <element signature="e#25#37#0" expanded="true" />
+            <element signature="e#25#37#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="68" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="270" column="48" lean-forward="false" selection-start-line="270" selection-start-column="35" selection-end-line="270" selection-end-column="48" />
+        <state relative-caret-position="-55">
+          <caret line="216" column="20" lean-forward="false" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="20" />
           <folding>
             <element signature="e#644#680#0" expanded="false" />
             <element signature="e#1101#2030#0" expanded="false" />
@@ -1000,25 +1002,16 @@
             <element signature="e#7345#7522#0" expanded="false" />
             <element signature="e#7559#7630#0" expanded="false" />
             <element signature="e#7682#8035#0" expanded="false" />
+            <element signature="e#8879#9204#0" expanded="false" />
             <element signature="e#9231#9502#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="223" column="69" lean-forward="false" selection-start-line="223" selection-start-column="69" selection-end-line="223" selection-end-column="69" />
+        <state relative-caret-position="566">
+          <caret line="223" column="73" lean-forward="false" selection-start-line="223" selection-start-column="73" selection-end-line="223" selection-end-column="73" />
           <folding>
             <element signature="e#8003#8009#0#HTML" expanded="true" />
             <element signature="e#8171#8177#0#HTML" expanded="true" />

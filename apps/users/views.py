@@ -264,7 +264,8 @@ def updateAllPlayerScore():
     allGames = getGameData()
     if allGames:
         for eachGame in allGames:
-            date = eachGame.date
+            # date = eachGame.date
+            date = '2017-05-11'
             allPlayers = getPlayerData(eachGame.teamname1, eachGame.teamname2)
             for position in ['c_players', 'pf_players', 'sf_players', 'sg_players', 'pg_players']:
                 for each_player in allPlayers[position]:
@@ -294,3 +295,10 @@ def updateRecord(recordID):
         if c_status == 'True' and pf_status == 'True' and sf_status == 'True' and sg_status == 'True' and pg_status == 'True':
             record.IsGameOver = 'True'
             record.save()
+
+        record.c_score = Player.objects.get(name=record.c_name).fantasy_score
+        record.pf_score = Player.objects.get(name=record.pf_name).fantasy_score
+        record.sf_score = Player.objects.get(name=record.sf_name).fantasy_score
+        record.sg_score = Player.objects.get(name=record.sg_name).fantasy_score
+        record.pg_score = Player.objects.get(name=record.pg_name).fantasy_score
+        record.save()

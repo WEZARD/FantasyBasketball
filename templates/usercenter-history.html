@@ -181,19 +181,19 @@
                         </div>
                         <script type="text/javascript">
                             function updateScore() {
-                                _gameOver = {
-                                    url: '{% url 'gameOver' %}',
-                                    type: 'GET',
-                                    data: {
-                                        recordID: {{ record.id }},
-                                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-                                    },
-
-                                    success: function (data) {
-                                        $('#money').text(data.money);
-                                        $('#winorlose').text(data.is_win);
-                                    }
-                                };
+{#                                _gameOver = {#}
+{#                                    url: '{% url 'gameOver' %}',#}
+{#                                    type: 'GET',#}
+{#                                    data: {#}
+{#                                        recordID: {{ record.id }},#}
+{#                                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()#}
+{#                                    },#}
+{##}
+{#                                    success: function (data) {#}
+{#                                        $('#money').text(data.money);#}
+{#                                        $('#winorlose').text(data.is_win);#}
+{#                                    }#}
+{#                                };#}
 
                                 _updateScore = {
                                     url: '{% url 'updateScore' %}',
@@ -211,10 +211,10 @@
                                         $('#pgScore{{ record.id }}').text(score.pg_score);
                                         $('#totalScore{{ record.id }}').text(score.total_point);
 
-                                        if (score.isGameOver == 'True') {
-                                            clearInterval(update_score);
-                                            $.ajax(_gameOver);
-                                        }
+{#                                        if (score.isGameOver == 'True') {#}
+{#                                            clearInterval(update_score);#}
+{#                                            $.ajax(_gameOver);#}
+{#                                        }#}
                                     }
                                 };
 
