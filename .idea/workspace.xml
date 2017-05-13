@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/nba_data_api.py" afterPath="$PROJECT_DIR$/apps/game/nba_data_api.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="626">
-              <caret line="223" column="75" lean-forward="true" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
+              <caret line="223" column="75" lean-forward="false" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
               <folding>
                 <element signature="e#8003#8009#0#HTML" expanded="true" />
                 <element signature="e#8171#8177#0#HTML" expanded="true" />
@@ -999,7 +998,7 @@
     <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="626">
-          <caret line="223" column="75" lean-forward="true" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
+          <caret line="223" column="75" lean-forward="false" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
           <folding>
             <element signature="e#8003#8009#0#HTML" expanded="true" />
             <element signature="e#8171#8177#0#HTML" expanded="true" />
