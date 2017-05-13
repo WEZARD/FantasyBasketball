@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/nba_data_api.py" afterPath="$PROJECT_DIR$/apps/game/nba_data_api.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/worker.py" afterPath="$PROJECT_DIR$/apps/game/worker.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding>
                 <element signature="e#24#38#0" expanded="true" />
               </folding>
@@ -1030,7 +1029,7 @@
     <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
           </folding>

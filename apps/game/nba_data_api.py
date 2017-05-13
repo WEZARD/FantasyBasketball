@@ -7,7 +7,7 @@ import boto3
 __author__ = 'zx'
 __date__ = '11/05/2017 20:05'
 
-sqs = boto3.resource('sqs', region_name='us-west-1')
+sqs = boto3.resource('sqs')
 queue = sqs.get_queue_by_name(QueueName='FantansyBasketball')
 
 headers = {
