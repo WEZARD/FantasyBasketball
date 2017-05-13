@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^home$', HomeView.as_view(), name='home'),  # 游戏大厅页面
     url(r'^select_team/$', TeamView.as_view(), name='select_team'),  # 组建队伍页面
     url(r'^user_center/history/update/$', users_views.updateScore, name='updateScore'),  # 更新数据
+    url(r'^user_center/history/update/$', users_views.gameOver, name='gameOver'),  # 更新数据
     # url(r'^$', users_views.test, name='log_in')  # 测试
 ]

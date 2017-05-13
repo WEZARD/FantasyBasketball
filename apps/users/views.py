@@ -16,7 +16,7 @@ from .forms import LoginForm, RegisterForm
 from .models import History, UserProfile
 from game.models import Player
 from game.views import getGameData, getUserData, getPlayerData
-from game.nba_data_api import getNewData
+from game.nba_data_api import getNewNbaData
 
 
 # class CustomBackend(ModelBackend):
@@ -207,20 +207,36 @@ def setSession(request, user):
     request.session['totalPoint'] = user.total_points
 
 
-# 实时更新数据
+# 前端实时显示数据
 def updateScore(request):
     updateAllPlayerScore()
     recordID = request.GET.get('recordID', None)
     if recordID is not None:
+        updateRecord(recordID)
         record = History.objects.get(id=recordID)
         c_score = record.c_score
         pf_score = record.pf_score
         sf_score = record.sf_score
         sg_score = record.sg_score
         pg_score = record.pg_score
+        isGameOver = record.IsGameOver
 
         data = {'c_score': c_score, 'pf_score': pf_score, 'sf_score': sf_score, 'sg_score': sg_score,
-                'pg_score': pg_score}
+                'pg_score': pg_score, 'isGameOver': isGameOver}
+        return JsonResponse(data)
+
+
+# 游戏结束显示数据
+def gameOver(request):
+    updateAllPlayerScore()
+    recordID = request.GET.get('recordID', None)
+    if recordID is not None:
+        record = History.objects.get(id=recordID)
+
+        # 要算球员价值和用户的钱
+        money = record.user.money
+        is_win = record.is_win
+        data = {'money': money, 'is_win': is_win}
         return JsonResponse(data)
 
 
@@ -247,33 +263,29 @@ def updateAllPlayerScore():
             allPlayers = getPlayerData(eachGame.teamname1, eachGame.teamname2)
             for position in ['c_players', 'pf_players', 'sf_players', 'sg_players', 'pg_players']:
                 for each_player in allPlayers[position]:
-                    playerStatus = getNewData(date, each_player.playerid)  # 返回球员名字，fantasypoints, isGameOver
-                    # 更新数据库
+                    playerStatus = getNewNbaData(date, each_player.playerid)  # 返回球员名字，fantasypoints, isGameOver
+
+                    # 更新数据库球员信息
                     playername = playerStatus['name']
                     fantasy_points = playerStatus['fantasy_score']
+                    isGameOver = playerStatus['isGameOver']
                     player = Player.objects.get(name=playername)
                     player.fantasy_score = fantasy_points
-                    print playername + ' point: ' + str(fantasy_points)
+                    player.IsGameOver = isGameOver
+                    # print playername + ' point: ' + str(fantasy_points)
                     player.save()
-            # for each_player in allPlayers['c_players']:
-            #     playerStatus = getNewData(date, each_player.playerid)  # 返回球员名字，fantasypoints, isGameOver
-            #     # 更新数据库
-            #     playername = playerStatus['name']
-            #     fantasy_points = playerStatus['fantasy_score']
-            #     player = Player.objects.get(name=playername)
-            #     player.fantasy_score = fantasy_points
-            #     print playername + ' point: ' + str(fantasy_points)
-            #     player.save()
 
-            # print allPlayers['c_players']
-            # if allPlayers:
-                # for eachPlayer in allPlayers:
-                    # print eachPlayer[0].name
-                    # playerStatus = getNewData(date, eachPlayer.playerid)  # 返回球员名字，fantasypoints, isGameOver
-                    # # 更新数据库
-                    # playername = playerStatus['name']
-                    # fantasy_points = playerStatus['fantasy_score']
-                    # # isGameOver = playerStatus['isGameOver']
-                    # player = Player.objects.get(name=playername)
-                    # player.fantasy_score = fantasy_points
-                    # player.save()
+
+# 更新游戏记录
+def updateRecord(recordID):
+    record = History.objects.get(id=recordID)
+    if record is not None:
+        c_status = Player.objects.get(name=record.c_name).IsGameOver
+        pf_status = Player.objects.get(name=record.pf_name).IsGameOver
+        sf_status = Player.objects.get(name=record.sf_name).IsGameOver
+        sg_status = Player.objects.get(name=record.sg_name).IsGameOver
+        pg_status = Player.objects.get(name=record.pg_name).IsGameOver
+
+        if c_status == 'True' and pf_status == 'True' and sf_status == 'True' and sg_status == 'True' and pg_status == 'True':
+            record.IsGameOver = 'True'
+            record.save()

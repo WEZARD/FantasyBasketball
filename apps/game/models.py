@@ -33,6 +33,7 @@ class Player(models.Model):
     teamname = models.CharField(max_length=20, verbose_name=u'TeamName', default=u'')
     value = models.IntegerField(verbose_name=u'Value', default=0)
     fantasy_score = models.FloatField(verbose_name=u'FantasyScore', default=0)
+    IsGameOver = models.CharField(max_length=10, verbose_name=u'IsGameOver', default=u'false')
 
     class Meta:
         verbose_name = u'Player'

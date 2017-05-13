@@ -38,7 +38,7 @@
                                 </dt>
                                 <dd>
                                     <h2>{{ data.userData.username }}</h2>
-                                    <p><b>Money:&nbsp;&nbsp;&nbsp;</b>{{ data.userData.money }}</p>
+                                    <p id="money"><b>Money:&nbsp;&nbsp;&nbsp;</b>{{ data.userData.money }}</p>
                                 </dd>
                             </dl>
                             <div class="btn">
@@ -104,13 +104,14 @@
                                 <ul class="fl tab_header">
                                     <li>{{ record.add_time }}</li>
                                 </ul>
-                                <div class="fr butler-num"><span class="key">{{ record.is_win }}&nbsp;&nbsp;
+                                <div class="fr butler-num"><span class="key" id="winorlose">{{ record.is_win }}&nbsp;&nbsp;
                                     {% if record.IsGameOver == 'True' %}<span><img
                                             width="12"
                                             height="12"
                                             class="scrollLoading"
                                             src="/static/images/ruchangfei.png">{{ record.total_point }}</span></span>
-                                        &nbsp;&nbsp;&nbsp;{% endif %}
+                                        &nbsp;&nbsp;&nbsp;
+                                    {% endif %}
                                 </div>
                             </div>
 
@@ -162,7 +163,21 @@
                         </div>
                         <script type="text/javascript">
                             function updateScore() {
-                                _update = {
+                                _gameOver = {
+                                    url: '{% url 'gameOver' %}',
+                                    type: 'GET',
+                                    data: {
+                                        recordID: {{ record.id }},
+                                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                                    },
+
+                                    success: function (data) {
+                                        $('#money').text(data.money);
+                                        $('#winorlose').text(data.is_win);
+                                    }
+                                };
+
+                                _updateScore = {
                                     url: '{% url 'updateScore' %}',
                                     type: 'GET',
                                     data: {
@@ -176,11 +191,19 @@
                                         $('#sfScore{{ record.id }}').text(score.sf_score);
                                         $('#sgScore{{ record.id }}').text(score.sg_score);
                                         $('#pgScore{{ record.id }}').text(score.pg_score);
+
+                                        if(score.isGameOver == 'True'){
+                                            clearInterval(update_score);
+                                            $.ajax(_gameOver);
+                                        }
                                     }
                                 };
-                                $.ajax(_update);
+
+                                $.ajax(_updateScore);
                             }
-                            setInterval(updateScore, 300000);
+
+                            update_score = setInterval(updateScore, 3000);
+
                         </script>
                     {% endfor %}
                 {% else %}
