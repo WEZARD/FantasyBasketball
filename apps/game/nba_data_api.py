@@ -8,7 +8,7 @@ __author__ = 'zx'
 __date__ = '11/05/2017 20:05'
 
 sqs = boto3.resource('sqs')
-queue = sqs.get_queue_by_name(QueueName='TwittTrends')
+queue = sqs.get_queue_by_name(QueueName='FantansyBasketball')
 
 headers = {
     # Request headers

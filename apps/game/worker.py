@@ -8,7 +8,7 @@ __date__ = '12/05/2017 15:30'
 
 sqs = boto3.resource('sqs')
 sns = boto3.client('sns')
-queue = sqs.get_queue_by_name(QueueName='TwittTrends')
+queue = sqs.get_queue_by_name(QueueName='FantansyBasketball')
 arn = 'arn:aws:sns:us-east-1:993294956953:Twitt'
 
 
