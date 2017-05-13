@@ -42,11 +42,11 @@ class History(models.Model):
     sf_name = models.CharField(max_length=30, verbose_name=u'SF_Name', default=u'')
     sg_name = models.CharField(max_length=30, verbose_name=u'SG_Name', default=u'')
     pg_name = models.CharField(max_length=30, verbose_name=u'PG_Name', default=u'')
-    c_score = models.IntegerField(verbose_name=u'c_score', default=0)
-    pf_score = models.IntegerField(verbose_name=u'pf_score', default=0)
-    sf_score = models.IntegerField(verbose_name=u'sf_score', default=0)
-    sg_score = models.IntegerField(verbose_name=u'sg_score', default=0)
-    pg_score = models.IntegerField(verbose_name=u'pg_score', default=0)
+    c_score = models.FloatField(verbose_name=u'c_score', default=0)
+    pf_score = models.FloatField(verbose_name=u'pf_score', default=0)
+    sf_score = models.FloatField(verbose_name=u'sf_score', default=0)
+    sg_score = models.FloatField(verbose_name=u'sg_score', default=0)
+    pg_score = models.FloatField(verbose_name=u'pg_score', default=0)
     total_point = models.FloatField(verbose_name=u'Sum', default=0)
 
     class Meta:

@@ -133,6 +133,7 @@ class UserHistoryView(View):
         sf_score = Player.objects.get(name=sf).fantasy_score
         sg_score = Player.objects.get(name=sg).fantasy_score
         pg_score = Player.objects.get(name=pg).fantasy_score
+        total_point = c_score + pf_score + sf_score + sg_score + pg_score
 
         c_value = Player.objects.get(name=c).value
         pf_value = Player.objects.get(name=pf).value
@@ -151,7 +152,8 @@ class UserHistoryView(View):
         setSession(request, user)
 
         record = History(add_time=add_time, c_name=c, pf_name=pf, sf_name=sf, sg_name=sg, pg_name=pg, user=user,
-                         c_score=c_score, pf_score=pf_score, sf_score=sf_score, sg_score=sg_score, pg_score=pg_score)
+                         total_point=total_point, c_score=c_score, pf_score=pf_score, sf_score=sf_score,
+                         sg_score=sg_score, pg_score=pg_score)
         record.save()
 
         # upload to ES
@@ -214,15 +216,18 @@ def updateScore(request):
     if recordID is not None:
         updateRecord(recordID)
         record = History.objects.get(id=recordID)
+        isGameOver = record.IsGameOver
         c_score = record.c_score
         pf_score = record.pf_score
         sf_score = record.sf_score
         sg_score = record.sg_score
         pg_score = record.pg_score
-        isGameOver = record.IsGameOver
+        total_point = c_score + pf_score + sf_score + sg_score + pg_score
+        record.total_point = total_point
+        record.save()
 
         data = {'c_score': c_score, 'pf_score': pf_score, 'sf_score': sf_score, 'sg_score': sg_score,
-                'pg_score': pg_score, 'isGameOver': isGameOver}
+                'pg_score': pg_score, 'isGameOver': isGameOver, 'total_point': total_point}
         return JsonResponse(data)
 
 

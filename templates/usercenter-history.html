@@ -152,6 +152,24 @@
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                         </b><span>{{ record.pg_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
                                                 id="pgScore{{ record.id }}">{{ record.pg_score }}</span></span></li>
+                                        <li><b>&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span</span></span></li>
+                                        <li><b>&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span</span></span></li>
+                                        <li><b>&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span</span></span></li>
+                                        <li><b>Total Point:&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                                id="totalScore{{ record.id }}">{{ record.total_point }}</span></span>
+                                        </li>
                                         <li><b>Your Rank:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -191,8 +209,9 @@
                                         $('#sfScore{{ record.id }}').text(score.sf_score);
                                         $('#sgScore{{ record.id }}').text(score.sg_score);
                                         $('#pgScore{{ record.id }}').text(score.pg_score);
+                                        $('#totalScore{{ record.id }}').text(score.total_point);
 
-                                        if(score.isGameOver == 'True'){
+                                        if (score.isGameOver == 'True') {
                                             clearInterval(update_score);
                                             $.ajax(_gameOver);
                                         }
@@ -202,7 +221,7 @@
                                 $.ajax(_updateScore);
                             }
 
-                            update_score = setInterval(updateScore, 3000);
+                            update_score = setInterval(updateScore, 10000);
 
                         </script>
                     {% endfor %}

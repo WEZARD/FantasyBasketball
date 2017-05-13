@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/game/worker.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FantasyBasketball/urls.py" afterPath="$PROJECT_DIR$/FantasyBasketball/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/models.py" afterPath="$PROJECT_DIR$/apps/game/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/nba_data_api.py" afterPath="$PROJECT_DIR$/apps/game/nba_data_api.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/users/models.py" afterPath="$PROJECT_DIR$/apps/users/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/users/views.py" afterPath="$PROJECT_DIR$/apps/users/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/usercenter-history.html" afterPath="$PROJECT_DIR$/templates/usercenter-history.html" />
     </list>
@@ -32,19 +29,17 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="219" column="34" lean-forward="true" selection-start-line="219" selection-start-column="34" selection-end-line="219" selection-end-column="34" />
+            <state relative-caret-position="306">
+              <caret line="229" column="90" lean-forward="false" selection-start-line="229" selection-start-column="90" selection-end-line="229" selection-end-column="90" />
               <folding>
                 <element signature="e#644#680#0" expanded="false" />
                 <element signature="e#1101#2030#0" expanded="false" />
                 <element signature="e#2069#3799#0" expanded="false" />
                 <element signature="e#3840#4051#0" expanded="false" />
-                <element signature="e#4097#7177#0" expanded="false" />
-                <element signature="e#7221#7398#0" expanded="false" />
-                <element signature="e#7435#7506#0" expanded="false" />
-                <element signature="e#7558#7911#0" expanded="false" />
-                <element signature="e#8942#9213#0" expanded="false" />
-                <element signature="e#9264#10219#0" expanded="false" />
+                <element signature="e#7345#7522#0" expanded="false" />
+                <element signature="e#7559#7630#0" expanded="false" />
+                <element signature="e#7682#8035#0" expanded="false" />
+                <element signature="e#9231#9502#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -53,9 +48,22 @@
       <file leaf-file-name="usercenter-history.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="204" column="72" lean-forward="false" selection-start-line="204" selection-start-column="72" selection-end-line="204" selection-end-column="72" />
-              <folding />
+            <state relative-caret-position="266">
+              <caret line="223" column="75" lean-forward="true" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
+              <folding>
+                <element signature="e#8003#8009#0#HTML" expanded="true" />
+                <element signature="e#8171#8177#0#HTML" expanded="true" />
+                <element signature="e#8177#8183#0#HTML" expanded="true" />
+                <element signature="e#8183#8189#0#HTML" expanded="true" />
+                <element signature="e#8330#8336#0#HTML" expanded="true" />
+                <element signature="e#8498#8504#0#HTML" expanded="true" />
+                <element signature="e#8504#8510#0#HTML" expanded="true" />
+                <element signature="e#8510#8516#0#HTML" expanded="true" />
+                <element signature="e#8657#8663#0#HTML" expanded="true" />
+                <element signature="e#8825#8831#0#HTML" expanded="true" />
+                <element signature="e#8831#8837#0#HTML" expanded="true" />
+                <element signature="e#8837#8843#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,7 +83,7 @@
       <file leaf-file-name="worker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/game/worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="345">
               <caret line="24" column="74" lean-forward="false" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
               <folding>
                 <element signature="e#25#37#0" expanded="true" />
@@ -97,11 +105,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data.Userdata.</find>
       <find>select a</find>
       <find>getUserData</find>
       <find>get</find>
-      <find>user</find>
       <find>sess</find>
       <find>session</find>
       <find>usercenter-info</find>
@@ -127,6 +133,8 @@
       <find>$</find>
       <find>money</find>
       <find>算</find>
+      <find>historyData</find>
+      <find>user</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,7 +165,6 @@
         <option value="$PROJECT_DIR$/FantasyBasketball/settings.py" />
         <option value="$PROJECT_DIR$/apps/users/forms.py" />
         <option value="$PROJECT_DIR$/templates/usercenter-rules.html" />
-        <option value="$PROJECT_DIR$/apps/users/models.py" />
         <option value="$PROJECT_DIR$/apps/game/views.py" />
         <option value="$PROJECT_DIR$/templates/usercenter-info.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
@@ -167,6 +174,7 @@
         <option value="$PROJECT_DIR$/apps/game/models.py" />
         <option value="$PROJECT_DIR$/FantasyBasketball/urls.py" />
         <option value="$PROJECT_DIR$/apps/users/views.py" />
+        <option value="$PROJECT_DIR$/apps/users/models.py" />
         <option value="$PROJECT_DIR$/templates/usercenter-history.html" />
       </list>
     </option>
@@ -197,7 +205,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,6 +298,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -603,7 +611,7 @@
     <frame x="0" y="22" width="1280" height="736" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22455573" sideWeight="0.487055" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22778675" sideWeight="0.487055" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="manage.py@FantasyBasketball" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -849,7 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -941,36 +948,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="19" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/game/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="89" column="53" lean-forward="false" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/game/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="34" column="94" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="94" />
           <folding />
         </state>
       </provider>
@@ -985,7 +966,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/game/worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="345">
           <caret line="24" column="74" lean-forward="false" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
           <folding>
             <element signature="e#25#37#0" expanded="true" />
@@ -993,30 +974,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/game/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="47" column="69" lean-forward="true" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="19" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="219" column="34" lean-forward="true" selection-start-line="219" selection-start-column="34" selection-end-line="219" selection-end-column="34" />
+        <state relative-caret-position="306">
+          <caret line="229" column="90" lean-forward="false" selection-start-line="229" selection-start-column="90" selection-end-line="229" selection-end-column="90" />
           <folding>
             <element signature="e#644#680#0" expanded="false" />
             <element signature="e#1101#2030#0" expanded="false" />
             <element signature="e#2069#3799#0" expanded="false" />
             <element signature="e#3840#4051#0" expanded="false" />
-            <element signature="e#4097#7177#0" expanded="false" />
-            <element signature="e#7221#7398#0" expanded="false" />
-            <element signature="e#7435#7506#0" expanded="false" />
-            <element signature="e#7558#7911#0" expanded="false" />
-            <element signature="e#8942#9213#0" expanded="false" />
-            <element signature="e#9264#10219#0" expanded="false" />
+            <element signature="e#7345#7522#0" expanded="false" />
+            <element signature="e#7559#7630#0" expanded="false" />
+            <element signature="e#7682#8035#0" expanded="false" />
+            <element signature="e#9231#9502#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="204" column="72" lean-forward="false" selection-start-line="204" selection-start-column="72" selection-end-line="204" selection-end-column="72" />
-          <folding />
+        <state relative-caret-position="266">
+          <caret line="223" column="75" lean-forward="true" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
+          <folding>
+            <element signature="e#8003#8009#0#HTML" expanded="true" />
+            <element signature="e#8171#8177#0#HTML" expanded="true" />
+            <element signature="e#8177#8183#0#HTML" expanded="true" />
+            <element signature="e#8183#8189#0#HTML" expanded="true" />
+            <element signature="e#8330#8336#0#HTML" expanded="true" />
+            <element signature="e#8498#8504#0#HTML" expanded="true" />
+            <element signature="e#8504#8510#0#HTML" expanded="true" />
+            <element signature="e#8510#8516#0#HTML" expanded="true" />
+            <element signature="e#8657#8663#0#HTML" expanded="true" />
+            <element signature="e#8825#8831#0#HTML" expanded="true" />
+            <element signature="e#8831#8837#0#HTML" expanded="true" />
+            <element signature="e#8837#8843#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
