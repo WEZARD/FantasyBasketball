@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0478bb31-8452-419b-ab87-cbe560421011" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/nba_data_api.py" afterPath="$PROJECT_DIR$/apps/game/nba_data_api.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/game/worker.py" afterPath="$PROJECT_DIR$/apps/game/worker.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/usercenter-history.html" afterPath="$PROJECT_DIR$/templates/usercenter-history.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +27,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="229" column="90" lean-forward="false" selection-start-line="229" selection-start-column="90" selection-end-line="229" selection-end-column="90" />
+            <state relative-caret-position="307">
+              <caret line="270" column="48" lean-forward="false" selection-start-line="270" selection-start-column="35" selection-end-line="270" selection-end-column="48" />
               <folding>
                 <element signature="e#644#680#0" expanded="false" />
                 <element signature="e#1101#2030#0" expanded="false" />
@@ -46,8 +46,8 @@
       <file leaf-file-name="usercenter-history.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="223" column="75" lean-forward="false" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
+            <state relative-caret-position="251">
+              <caret line="223" column="69" lean-forward="false" selection-start-line="223" selection-start-column="69" selection-end-line="223" selection-end-column="69" />
               <folding>
                 <element signature="e#8003#8009#0#HTML" expanded="true" />
                 <element signature="e#8171#8177#0#HTML" expanded="true" />
@@ -66,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nba_data_api.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nba_data_api.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+            <state relative-caret-position="442">
+              <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
               <folding>
                 <element signature="e#24#38#0" expanded="true" />
               </folding>
@@ -78,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="worker.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="worker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/game/worker.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding>
                 <element signature="e#25#37#0" expanded="true" />
               </folding>
@@ -123,8 +123,6 @@
       <find>request</find>
       <find>ajax</find>
       <find>cScore</find>
-      <find>getNewNbaData</find>
-      <find>updateAllPlayerScore</find>
       <find>&amp;&amp;&amp;&amp;</find>
       <find>$</find>
       <find>money</find>
@@ -133,6 +131,8 @@
       <find>user</find>
       <find>sns</find>
       <find>queue</find>
+      <find>updateAllPlayerScore</find>
+      <find>getNewNbaData</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,9 +171,9 @@
         <option value="$PROJECT_DIR$/FantasyBasketball/urls.py" />
         <option value="$PROJECT_DIR$/apps/users/views.py" />
         <option value="$PROJECT_DIR$/apps/users/models.py" />
+        <option value="$PROJECT_DIR$/apps/game/worker.py" />
         <option value="$PROJECT_DIR$/templates/usercenter-history.html" />
         <option value="$PROJECT_DIR$/apps/game/nba_data_api.py" />
-        <option value="$PROJECT_DIR$/apps/game/worker.py" />
       </list>
     </option>
   </component>
@@ -609,7 +609,7 @@
     <frame x="0" y="22" width="1280" height="736" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22778675" sideWeight="0.487055" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22778675" sideWeight="0.487055" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="manage.py@FantasyBasketball" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -971,10 +971,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/game/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/game/worker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding>
+            <element signature="e#25#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="229" column="90" lean-forward="false" selection-start-line="229" selection-start-column="90" selection-end-line="229" selection-end-column="90" />
+        <state relative-caret-position="307">
+          <caret line="270" column="48" lean-forward="false" selection-start-line="270" selection-start-column="35" selection-end-line="270" selection-end-column="48" />
           <folding>
             <element signature="e#644#680#0" expanded="false" />
             <element signature="e#1101#2030#0" expanded="false" />
@@ -988,18 +1006,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/game/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/usercenter-history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="223" column="75" lean-forward="false" selection-start-line="223" selection-start-column="75" selection-end-line="223" selection-end-column="75" />
+        <state relative-caret-position="251">
+          <caret line="223" column="69" lean-forward="false" selection-start-line="223" selection-start-column="69" selection-end-line="223" selection-end-column="69" />
           <folding>
             <element signature="e#8003#8009#0#HTML" expanded="true" />
             <element signature="e#8171#8177#0#HTML" expanded="true" />
@@ -1019,20 +1029,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/game/nba_data_api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+        <state relative-caret-position="442">
+          <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/game/worker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding>
-            <element signature="e#25#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
